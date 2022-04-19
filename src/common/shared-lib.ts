@@ -7,16 +7,29 @@ const CONSTANTS = {
 
 Object.freeze(CONSTANTS);
 
+const DEFAULTS = {
+    searchPageUrl: `/_layouts/15/search.aspx`
+}
+
 const Log = {
-    info(source: string, message: string) {
-        spLog.info(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
+    info(source: string, message: string | object) {
+        console.log(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
     },
 
-    warn(source: string, message: string) {
-        spLog.warn(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
+    warn(source: string, message: string | object) {
+        console.warn(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
     }
 };
 
 Object.freeze(Log);
+
+export function printObject(o: object) {
+    const stack = [];
+    for( const p in o) {
+        stack.push(`${p}: ${o[p]}`)
+    }
+
+    return `{${stack.join(', ')}}`
+}
 
 export { CONSTANTS, Log };

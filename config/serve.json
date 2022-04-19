@@ -9,7 +9,8 @@
         "2a101aba-e680-4d60-8d32-b49489038afc": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "searchPageUrl": "/_layouts/15/search.aspx",
+            "queryStringParameter": "q"
           }
         }
       }
@@ -20,7 +21,8 @@
         "2a101aba-e680-4d60-8d32-b49489038afc": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "searchPageUrl": "/_layouts/15/search.aspx",
+            "queryStringParameter": "q"
           }
         }
       }
