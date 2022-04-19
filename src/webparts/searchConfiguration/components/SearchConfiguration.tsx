@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './SearchConfiguration.module.scss';
 import { ISearchConfigurationProps } from './ISearchConfigurationProps';
 import { escape } from '@microsoft/sp-lodash-subset';
+import { SearchBox } from 'office-ui-fabric-react';
 
 export default class SearchConfiguration extends React.Component<ISearchConfigurationProps, {}> {
   public render(): React.ReactElement<ISearchConfigurationProps> {
@@ -13,8 +14,8 @@ export default class SearchConfiguration extends React.Component<ISearchConfigur
       userDisplayName
     } = this.props;
 
-    return (
-      <div>{environmentMessage}</div>
-    );
+    return <div title={ environmentMessage }>
+      <SearchBox />
+    </div>;
   }
 }

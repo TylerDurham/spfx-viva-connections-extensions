@@ -16,7 +16,6 @@ import { CONSTANTS } from '../../common/shared-lib';
 export interface ISearchConfigurationWebPartProps {
   description: string;
 }
-
 export default class SearchConfigurationWebPart extends BaseClientSideWebPart<ISearchConfigurationWebPartProps> {
 
   private _isDarkTheme: boolean = false;
