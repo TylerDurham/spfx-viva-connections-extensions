@@ -11,6 +11,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'SearchConfigurationWebPartStrings';
 import SearchConfiguration from './components/SearchConfiguration';
 import { ISearchConfigurationProps } from './components/ISearchConfigurationProps';
+import { CONSTANTS } from '../../common/shared-lib';
 
 export interface ISearchConfigurationWebPartProps {
   description: string;
@@ -38,8 +39,9 @@ export default class SearchConfigurationWebPart extends BaseClientSideWebPart<IS
         userDisplayName: this.context.pageContext.user.displayName
       }
     );
-
-    ReactDom.render(element, this.domElement);
+    const portalSearchEl = document.getElementById(CONSTANTS.PORTAL_SEARCH_EL_REF_ID)
+    //const portalSearchEl = document.getElementById("spTopPlaceholder")
+    ReactDom.render(element, portalSearchEl);
   }
 
   private _getEnvironmentMessage(): string {
