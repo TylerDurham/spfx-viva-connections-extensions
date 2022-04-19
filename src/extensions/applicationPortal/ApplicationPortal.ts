@@ -53,10 +53,8 @@ export default class ApplicationPortal
 
         // Build the base HTML for the app portal
         const appPortalHTML = `
-          <div class="${styles.appPortal}" style="width: 100%">
-            
-            <div class="${styles.search} id="${CONSTANTS.PORTAL_SEARCH_EL_REF_ID}">${strings.searchPortalNotConfigured}</div>
-
+          <div class="${styles.appPortal}" style="width: 100%">            
+            <div class="${styles.search}" id="${CONSTANTS.PORTAL_SEARCH_EL_REF_ID}">${strings.searchPortalNotConfigured}</div>
           </div>
         `
         Log.info(LOG_SOURCE, `Attempting to render app portal in TOPop placeholder ..`);

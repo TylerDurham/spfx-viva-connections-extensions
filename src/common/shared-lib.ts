@@ -1,7 +1,7 @@
 import { Log as spLog } from "@microsoft/sp-core-library";
 
 const CONSTANTS = {
-    PORTAL_SEARCH_EL_REF_ID: "PORTAL-SEARCH{BA4784BC-B037-46EC-B107-B8414CEDD7C9}",
+    PORTAL_SEARCH_EL_REF_ID: "ba4784bcb03746ecb107b8414cedd7c9",
     LOG_SOURCE: "SPFX Viva Connections Extensions"
 };
 
