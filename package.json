@@ -9,7 +9,8 @@
     "test": "gulp test",
     "preversion": "node ./tools/pre-version.js $npm_package_version",
     "version": "git add -A ./config/package-solution.json",
-    "postversion": "gulp clean"
+    "postversion": "gulp clean",
+    "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
   },
   "dependencies": {
     "@microsoft/sp-core-library": "1.14.0",
@@ -33,6 +34,7 @@
     "ajv": "~5.2.2",
     "@types/webpack-env": "1.13.1",
     "@types/react": "16.9.51",
-    "@types/react-dom": "16.9.8"
+    "@types/react-dom": "16.9.8",
+    "spfx-fast-serve-helpers": "~1.14.0"
   }
 }

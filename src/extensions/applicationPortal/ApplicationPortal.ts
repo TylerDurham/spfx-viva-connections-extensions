@@ -2,7 +2,6 @@ import {
   BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
 } from '@microsoft/sp-application-base';
 import styles from './ApplicationPortal.module.scss';
-
 import * as strings from 'ApplicationPortalStrings';
 import { CONSTANTS, Log } from '../../common/shared-lib';
 
