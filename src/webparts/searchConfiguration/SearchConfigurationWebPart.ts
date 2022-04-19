@@ -39,7 +39,7 @@ export default class SearchConfigurationWebPart extends BaseClientSideWebPart<IS
         userDisplayName: this.context.pageContext.user.displayName
       }
     );
-    const portalSearchEl = document.getElementById(CONSTANTS.PORTAL_SEARCH_EL_REF_ID)
+    const portalSearchEl = document.getElementById(CONSTANTS.PORTAL_SEARCH_EL_REF_ID);
     //const portalSearchEl = document.getElementById("spTopPlaceholder")
     ReactDom.render(element, portalSearchEl);
   }

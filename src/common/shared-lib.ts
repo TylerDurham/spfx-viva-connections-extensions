@@ -15,8 +15,8 @@ const Log = {
     warn(source: string, message: string) {
         spLog.warn(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
     }
-}
+};
 
 Object.freeze(Log);
 
-export { CONSTANTS, Log }
+export { CONSTANTS, Log };

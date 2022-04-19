@@ -56,7 +56,7 @@ export default class ApplicationPortal
           <div class="${styles.appPortal}" style="width: 100%">            
             <div class="${styles.search}" id="${CONSTANTS.PORTAL_SEARCH_EL_REF_ID}">${strings.searchPortalNotConfigured}</div>
           </div>
-        `
+        `;
         Log.info(LOG_SOURCE, `Attempting to render app portal in TOPop placeholder ..`);
         this.topPlaceholder.domElement.innerHTML = appPortalHTML;
         Log.info(LOG_SOURCE, `Successfully rendered app portal in TOP placeholder!`);
