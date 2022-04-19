@@ -1,27 +1,28 @@
 import {
   BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
 } from '@microsoft/sp-application-base';
-import styles from './ApplicationPortal.module.scss';
-import * as strings from 'ApplicationPortalStrings';
-import { CONSTANTS, Log } from '../../common/shared-lib';
+import styles from './PortalApplicationCustomizer.module.scss';
+import * as strings from 'PortalApplicationCustomizerStrings';
+import { CONSTANTS, Log } from '../common/shared-lib';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Portal } from './components/portal';
 
-const LOG_SOURCE = "ApplicationPortal";
-
-
+const LOG_SOURCE = "PortalApplicationCustomizer";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
  * it will be deserialized into the BaseExtension.properties object.
  * You can define an interface to describe it.
  */
-export interface IApplicationPortalProperties {
+export interface IPortalApplicationCustomizerProperties {
   // This is an example; replace with your own property
-  testMessage: string;
+  searchResultsPageUrl: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
-export default class ApplicationPortal
-  extends BaseApplicationCustomizer<IApplicationPortalProperties> {
+export default class PortalApplicationCustomizer
+  extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
 
   private topPlaceholder: PlaceholderContent | undefined;
   
@@ -58,7 +59,8 @@ export default class ApplicationPortal
           </div>
         `;
         Log.info(LOG_SOURCE, `Attempting to render app portal in TOP placeholder ..`);
-        this.topPlaceholder.domElement.innerHTML = appPortalHTML;
+        const portal = React.createElement(Portal, {});
+        ReactDOM.render(portal, this.topPlaceholder.domElement)
         Log.info(LOG_SOURCE, `Successfully rendered app portal in TOP placeholder!`);
       }
     }

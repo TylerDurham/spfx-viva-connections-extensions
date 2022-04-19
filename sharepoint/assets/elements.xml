@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
     <CustomAction
-        Title="ApplicationPortal"
+        Title="PortalApplicationCustomizer"
         Location="ClientSideExtension.ApplicationCustomizer"
         ClientSideComponentId="2a101aba-e680-4d60-8d32-b49489038afc"
         ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">

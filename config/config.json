@@ -5,8 +5,8 @@
     "application-portal-application-customizer": {
       "components": [
         {
-          "entrypoint": "./lib/extensions/applicationPortal/ApplicationPortal.js",
-          "manifest": "./src/extensions/applicationPortal/ApplicationPortal.manifest.json"
+          "entrypoint": "./lib/extensions/PortalApplicationCustomizer.js",
+          "manifest": "./src/extensions/PortalApplicationCustomizer.manifest.json"
         }
       ]
     },
@@ -21,7 +21,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "ApplicationPortalStrings": "lib/extensions/applicationPortal/loc/{locale}.js",
+    "PortalApplicationCustomizerStrings": "lib/extensions/loc/{locale}.js",
     "SearchConfigurationWebPartStrings": "lib/webparts/searchConfiguration/loc/{locale}.js"
   }
 }

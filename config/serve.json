@@ -14,7 +14,7 @@
         }
       }
     },
-    "applicationPortal": {
+    "PortalApplicationCustomizer": {
       "pageUrl": "https://smartterthings.sharepoint.com/sites/DEV01",
       "customActions": {
         "2a101aba-e680-4d60-8d32-b49489038afc": {
