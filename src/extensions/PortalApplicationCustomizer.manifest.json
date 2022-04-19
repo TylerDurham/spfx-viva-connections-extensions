@@ -8,6 +8,6 @@
 
   "version": "*",
   "manifestVersion": 2,
-
+  "properties": { "searchPageUrl": "/_layouts/15/search.aspx", "queryStringParameter": "q" },
   "requiresCustomScript": false
 }

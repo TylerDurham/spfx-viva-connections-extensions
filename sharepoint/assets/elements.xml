@@ -4,6 +4,6 @@
         Title="PortalApplicationCustomizer"
         Location="ClientSideExtension.ApplicationCustomizer"
         ClientSideComponentId="2a101aba-e680-4d60-8d32-b49489038afc"
-        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+        ClientSideComponentProperties="{&quot;searchPageUrl&quot;: &quot;/_layouts/15/search.aspx&quot;, &quot;queryStringParameter&quot;: &quot;q&quot;}">
     </CustomAction>
 </Elements>
