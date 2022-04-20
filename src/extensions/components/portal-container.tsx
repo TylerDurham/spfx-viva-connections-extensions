@@ -27,7 +27,7 @@ export class Portal extends React.Component<IPortalProps, IPortalState> {
                     searchPageUrl={this.props.searchPageUrl} />
 
             </div>
-        )
+        );
     }
 
 }
