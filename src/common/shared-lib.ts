@@ -9,7 +9,7 @@ Object.freeze(CONSTANTS);
 
 const DEFAULTS = {
     searchPageUrl: `/_layouts/15/search.aspx`
-}
+};
 
 const Log = {
     info(source: string, message: string | object) {
@@ -26,10 +26,10 @@ Object.freeze(Log);
 export function printObject(o: object) {
     const stack = [];
     for( const p in o) {
-        stack.push(`${p}: ${o[p]}`)
+        stack.push(`${p}: ${o[p]}`);
     }
 
-    return `{${stack.join(', ')}}`
+    return `{${stack.join(', ')}}`;
 }
 
 export { CONSTANTS, Log };

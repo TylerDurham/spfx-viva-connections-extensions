@@ -61,7 +61,7 @@ export default class PortalApplicationCustomizer
           searchPageUrl: `${this.context.pageContext.web.absoluteUrl}${this.properties.searchPageUrl}`,
           queryStringParameter: this.properties.queryStringParameter
         });
-        ReactDOM.render(portal, this.topPlaceholder.domElement)
+        ReactDOM.render(portal, this.topPlaceholder.domElement);
 
         Log.info(LOG_SOURCE, `Successfully rendered app portal in TOP placeholder!`);
       }
