@@ -1,7 +1,7 @@
-import { ISearchContainerProps, ISearchContainerState } from './search-container.int';
-import { SearchBox, TooltipHost } from 'office-ui-fabric-react';
 import * as React from 'react';
 import styles from './search-container.module.scss';
+import { ISearchContainerProps, ISearchContainerState } from './search-container.int';
+import { SearchBox, TooltipHost } from 'office-ui-fabric-react';
 
 export class SearchContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
 

@@ -1,11 +1,9 @@
-import {
-  BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
-} from '@microsoft/sp-application-base';
-import styles from './PortalApplicationCustomizer.module.scss';
-import * as strings from 'PortalApplicationCustomizerStrings';
-import { CONSTANTS, Log, printObject } from '../common/shared-lib';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as strings from 'PortalApplicationCustomizerStrings';
+import styles from './PortalApplicationCustomizer.module.scss';
+import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
+import { CONSTANTS, Log, printObject } from '../common/shared-lib';
 import { Portal } from './components/portal-container';
 
 const LOG_SOURCE = "PortalApplicationCustomizer";

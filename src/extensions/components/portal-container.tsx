@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styles from './portal-container.module.scss';
-import { IPortalProps, IPortalState } from './portal-container.int';
-import { SearchContainer } from './search-container';
-import { Log, printObject } from '../../common/shared-lib';
 import { HomeButton } from './home-button';
+import { IPortalProps, IPortalState } from './portal-container.int';
+import { Log, printObject } from '../../common/shared-lib';
+import { SearchContainer } from './search-container';
 
 const LOG_SOURCE = "Portal";
 
