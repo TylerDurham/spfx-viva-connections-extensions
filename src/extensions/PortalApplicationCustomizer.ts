@@ -27,7 +27,7 @@ export default class PortalApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
 
   private topPlaceholder: PlaceholderContent | undefined;
-  
+
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized.`);
 
@@ -36,6 +36,14 @@ export default class PortalApplicationCustomizer
     this.context.placeholderProvider.changedEvent.add(this, this.renderPlaceHolders);
 
     return Promise.resolve();
+  }
+
+  private isInIFrame() {
+    try {
+      return window.self !== window.top;
+    } catch (e) {
+      return true;
+    }
   }
 
   private renderPlaceHolders() {
@@ -54,16 +62,24 @@ export default class PortalApplicationCustomizer
 
       if (this.topPlaceholder.domElement) {
 
-        Log.info(LOG_SOURCE, `Attempting to render app portal in TOP placeholder with the properties ${printObject(this.properties)}`);
-        
-        const portal = React.createElement(Portal, {
-          homePageUrl: this.context.pageContext.site.absoluteUrl,
-          searchPageUrl: `${this.context.pageContext.web.absoluteUrl}${this.properties.searchPageUrl}`,
-          queryStringParameter: this.properties.queryStringParameter
-        });
-        ReactDOM.render(portal, this.topPlaceholder.domElement);
+        const isInIFrame = this.isInIFrame();
+        const isDebugging = location.href.indexOf('debugManifestsFile=') > -1;
+        Log.info(LOG_SOURCE, `IsInIFrame: ${isInIFrame}, IsDebugging: ${isDebugging}`);
+        if (isInIFrame == true || isDebugging == true) {
 
-        Log.info(LOG_SOURCE, `Successfully rendered app portal in TOP placeholder!`);
+          Log.info(LOG_SOURCE, `Attempting to render app portal in TOP placeholder with the properties ${printObject(this.properties)}`);
+
+          const portal = React.createElement(Portal, {
+            homePageUrl: this.context.pageContext.site.absoluteUrl,
+            searchPageUrl: `${this.context.pageContext.web.absoluteUrl}${this.properties.searchPageUrl}`,
+            queryStringParameter: this.properties.queryStringParameter
+          });
+          ReactDOM.render(portal, this.topPlaceholder.domElement);
+
+          Log.info(LOG_SOURCE, `Successfully rendered app portal in TOP placeholder!`);
+        } else {
+          Log.info(LOG_SOURCE, `Not hosted in IFRAME, so not rendered.`);
+        }
       }
     }
   }
