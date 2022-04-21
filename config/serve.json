@@ -10,7 +10,21 @@
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "searchPageUrl": "/_layouts/15/search.aspx",
-            "queryStringParameter": "q"
+            "queryStringParameter": "q",
+            "placeholderText": "Search in SharePoint"
+          }
+        }
+      }
+    },
+    "3bcdst": {
+      "pageUrl": "https://3bcdst.sharepoint.com",
+      "customActions": {
+        "2a101aba-e680-4d60-8d32-b49489038afc": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "searchPageUrl": "/_layouts/15/search.aspx",
+            "queryStringParameter": "q",
+            "placeholderText": "Search in SharePoint"
           }
         }
       }
@@ -22,7 +36,8 @@
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "searchPageUrl": "/_layouts/15/search.aspx",
-            "queryStringParameter": "q"
+            "queryStringParameter": "q",
+            "placeholderText": "Search in SharePoint"
           }
         }
       }

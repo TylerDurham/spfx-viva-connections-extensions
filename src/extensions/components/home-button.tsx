@@ -19,6 +19,7 @@ export const HomeButton = (props: IHomeButtonProps) => {
 };
 
 const handleOnClick = (props: IHomeButtonProps): void => {
-	Log.info(`HomeButton.handleOnClick`, `Navigating to ${props.homePageUrl}`);
-	window.location.href = props.homePageUrl;
+	const url = `${props.homePageUrl}?${props.portalContext.debugParameters}`;
+	Log.info(`HomeButton.handleOnClick`, `Navigating to "${url}"`);
+	window.location.href = url;
 };

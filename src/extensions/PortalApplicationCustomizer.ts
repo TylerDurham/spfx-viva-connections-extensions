@@ -5,6 +5,7 @@ import styles from './PortalApplicationCustomizer.module.scss';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { CONSTANTS, Log, printObject } from '../common/shared-lib';
 import { Portal } from './components/portal-container';
+import getPortalContext from '../common/portal-context';
 
 const LOG_SOURCE = "PortalApplicationCustomizer";
 
@@ -17,8 +18,10 @@ export interface IPortalApplicationCustomizerProperties {
   // This is an example; replace with your own property
   searchPageUrl: string;
   queryStringParameter: string;
+  placeholderText: string;
 }
 
+const portalContext = getPortalContext(location.href);
 
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class PortalApplicationCustomizer
@@ -27,7 +30,8 @@ export default class PortalApplicationCustomizer
   private topPlaceholder: PlaceholderContent | undefined;
 
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized.`);
+    
+    Log.info(LOG_SOURCE, `Initialized with portal context: ${printObject(portalContext)}`);
 
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
@@ -70,7 +74,9 @@ export default class PortalApplicationCustomizer
           const portal = React.createElement(Portal, {
             homePageUrl: this.context.pageContext.site.absoluteUrl,
             searchPageUrl: `${this.context.pageContext.web.absoluteUrl}${this.properties.searchPageUrl}`,
-            queryStringParameter: this.properties.queryStringParameter
+            queryStringParameter: this.properties.queryStringParameter,
+            placeholderText: this.properties.placeholderText,
+            portalContext: portalContext
           });
           ReactDOM.render(portal, this.topPlaceholder.domElement);
 

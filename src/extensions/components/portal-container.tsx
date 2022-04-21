@@ -20,11 +20,14 @@ export class Portal extends React.Component<IPortalProps, IPortalState> {
             <div className={styles.portalContainer}>
 
                 <HomeButton 
-                    homePageUrl={this.props.homePageUrl} />
+                    homePageUrl={this.props.homePageUrl}
+                    portalContext={this.props.portalContext} />
 
                 <SearchContainer 
                     queryStringParameter={this.props.queryStringParameter} 
-                    searchPageUrl={this.props.searchPageUrl} />
+                    searchPageUrl={this.props.searchPageUrl}
+                    placeholderText={this.props.placeholderText}
+                    portalContext={this.props.portalContext} />
 
             </div>
         );
