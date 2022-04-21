@@ -1,6 +1,6 @@
 # SPFX Viva Connectons Extensions
 
-
+![Screenshot 1: The extension in Viva Connections](https://github.com/TylerDurham/spfx-viva-connections-extensions/blob/master/img/screenshot-1.png?raw=true)
 
 ## Summary
 
