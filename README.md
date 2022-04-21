@@ -12,15 +12,16 @@ This Sharepoint Framework (SPFX) Extension provides enhanced functionality for y
 
 Customer feedback indicated that the default search experience in Viva Connections was confusing to end users (e.g. they must wait for a delay before being able to choose to search in SharePoint).
 
-This extension provides a dedicated search box on every page in the Home Site when rendered in Viva Connections. It only appears within Viva Connections - ```it will not show up in the desktop browser!```
+This extension provides a dedicated search box on every page in the Home Site when rendered in Viva Connections. It only appears within Viva Connections - ```it will not show up in the desktop browser!``` 😎
 
 ### Home Button on Every Page
 
-Navigating certain pages in Viva Connections can be tricky... this extension places a **Home Button** on each page so that users can get back to the start quickly and easily. The **Home Button** only appears within Viva Connections - ```it will not show up in the desktop browser!```
+Navigating certain pages in Viva Connections can be tricky... this extension places a **Home Button** on each page so that users can get back to the start quickly and easily. The **Home Button** only appears within Viva Connections - ```it will not show up in the desktop browser!``` 😎
 
 ## Known Issues
 
-* Search suggestions not implemented - ```yet!```
+* Search suggestions not implemented - ```yet!``` 😎
+* Does not appear on external pages (i.e. pages NOT stored in SharePoint). 😞
 
 ## Used SharePoint Framework Version
 
