@@ -6,7 +6,8 @@ import styles from './application-customizer.module.scss';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { IApplicationCustomizerProps } from './application-customizer.interfaces';
 import { initializeContext } from '../common/portal-context';
-import { Log, printObject } from '../common/shared-lib';
+import { Log, printObject } from '../common/shared-lib';  
+import version from '../common/version-info';
 
 const LOG_SOURCE = "ApplicationCustomizer";
 
