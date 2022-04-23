@@ -7,23 +7,24 @@
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "iconPath": "images/app-icon.png",
     "developer": {
-      "name": "",
-      "websiteUrl": "",
+      "name": "TylerDurham <TylerDurham@users.noreply.github.com>",
+      "websiteUrl": "https://github.com/TylerDurham/spfx-viva-connections-extensions",
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "mpnId": "Undefined-1.14.0"
     },
     "metadata": {
       "shortDescription": {
-        "default": "spfx-viva-connections-extensions description"
+        "default": "This extension provides a dedicated search box on every page in the Home Site when rendered in Viva Connections."
       },
       "longDescription": {
-        "default": "spfx-viva-connections-extensions description"
+        "default": "This extension provides a dedicated search box on every page in the Home Site when rendered in Viva Connections. It only appears within Viva Connections - it will not show up in the desktop browser!"
       },
-      "screenshotPaths": [],
+      "screenshotPaths": [ "images/screenshot-1.png"],
       "videoUrl": "",
-      "categories": []
+      "categories": ["Site Design", "Legal + HR","IT/admin"]
     },
     "features": [
       {
