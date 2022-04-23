@@ -1,3 +1,5 @@
+
+![Logo](https://github.com/TylerDurham/spfx-viva-connections-extensions/blob/master/sharepoint/images/app-icon.png?raw=true)
 # SPFX Viva Connectons Extensions
 
 ## Summary
