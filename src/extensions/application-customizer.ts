@@ -1,13 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as strings from 'PortalApplicationCustomizerStrings';
 import Portal from './components/portal-container';
-import styles from './application-customizer.module.scss';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { IApplicationCustomizerProps } from './application-customizer.interfaces';
 import { initializeContext } from '../common/portal-context';
 import { Log, printObject } from '../common/shared-lib';  
-import version from '../common/version-info';
+import VersionInfo from '../common/version-info';
 
 const LOG_SOURCE = "ApplicationCustomizer";
 
@@ -18,46 +16,18 @@ export default class PortalApplicationCustomizer
   private topPlaceholder: PlaceholderContent | undefined;
   private portalContext;
 
-  public onInit(): Promise<void> {
+  public onInit() {
 
     this.portalContext = initializeContext(this.context, this.properties);
 
-    Log.info(LOG_SOURCE, `Initialized with portal context:`);
-    Log.info(LOG_SOURCE, this.portalContext);
+    Log.info(LOG_SOURCE, `Package (v. "${VersionInfo.package}") in solution (v. "${VersionInfo.solution}" Initialized with portal context:`);
+    // Log.info(LOG_SOURCE, this.portalContext);
 
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
     this.context.placeholderProvider.changedEvent.add(this, this.renderPlaceHolders);
 
     return Promise.resolve();
-  }
-
-  
-  private checkSearchPageUrl(url: string) {
-    if(url === undefined || url === null || url.trim().length == 0) {
-      // Defaut value
-      url = "/_layouts/15/search.aspx/";
-    }
-
-    // Realative URL
-    if (url.indexOf("/") == 0) return this.context.pageContext.web.absoluteUrl + url;
-  }
-
-  private checkQueryStringParameter(queryStringParameter: string) {
-    if (this.isNullOrEmpty(queryStringParameter)) {
-      // Default value.
-      queryStringParameter = "q";
-    }
-    return queryStringParameter;
-  }
-
-  private isNullOrEmpty<T>(v: T) {
-    if (v === undefined || v === null ) return true;
-    if(typeof v === 'string') {
-      return (v.trim().length === 0);
-    }
-
-    return false;
   }
 
   private isInIFrame() {
@@ -85,7 +55,7 @@ export default class PortalApplicationCustomizer
       if (this.topPlaceholder.domElement) {
 
         const isInIFrame = this.isInIFrame();
-        const isDebugging = location.href.indexOf('debugManifestsFile=') > -1;
+        const isDebugging = this.portalContext.debug.isDebugging;
         Log.info(LOG_SOURCE, `IsInIFrame: ${isInIFrame}, IsDebugging: ${isDebugging}`);
         if (isInIFrame == true || isDebugging == true) {
 
@@ -98,40 +68,9 @@ export default class PortalApplicationCustomizer
 
           Log.info(LOG_SOURCE, `Successfully rendered app portal in TOP placeholder!`);
         } else {
-          Log.info(LOG_SOURCE, `Not hosted in IFRAME, so not rendered.`);
+          Log.info(LOG_SOURCE, `Not hosted in IFRAME & not debugging, so not rendered.`);
         }
       }
     }
   }
 }
-
-
-/*
-
-private initPortalContext() {
-    
-    const props = this.properties;
-
-    // TODO: Get Home Site URL?
-    const webUrl = this.context.pageContext.web.absoluteUrl;
-    const searchPageUrl = this.checkSearchPageUrl(this.properties.searchPageUrl);
-    const queryStringParameter = this.checkQueryStringParameter(this.properties.queryStringParameter);
-  
-    return {
-      isDebugging: isDebugging,
-      debugParameters: debugParameters,
-      properties: {
-        homePageUrl: webUrl,
-        searchPageUrl: searchPageUrl,
-        queryStringParameter: queryStringParameter,
-        placeholderText: props.placeholderText
-      },
-      req: {
-        url: location.href,
-        query: query
-      }
-    };
-  }
-
-
-*/
