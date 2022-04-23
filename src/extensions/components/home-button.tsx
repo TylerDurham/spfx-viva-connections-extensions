@@ -2,24 +2,28 @@ import * as React from "react";
 import styles from "./home-button.module.scss";
 import {IconButton, IIconProps} from "office-ui-fabric-react";
 import {IHomeButtonProps} from "./home-button.int";
-import {Log} from "../../common/shared-lib";
+import {Log} from "../../common/shared-lib"; 
+import {IPortalContext, PortalContext} from '../../common/portal-context';
 
 const icon: IIconProps = {iconName: "Home"};
 
 export const HomeButton = (props: IHomeButtonProps) => {
+
+const context = React.useContext(PortalContext);
+
 	return (
 		<IconButton
 			className={styles.homeButton}
 			iconProps={icon}
 			onClick={() => {
-				handleOnClick(props);
+				handleOnClick(context);
 			}}
 		/>
 	);
 };
 
-const handleOnClick = (props: IHomeButtonProps): void => {
-	const url = `${props.homePageUrl}?${props.portalContext.debugParameters}`;
+const handleOnClick = (context: IPortalContext): void => {
+	const url = `${context.properties.homePageUrl}?${context.debug.debugParameters}`;
 	Log.info(`HomeButton.handleOnClick`, `Navigating to "${url}"`);
-	window.location.href = url;
+	location.href = url;
 };

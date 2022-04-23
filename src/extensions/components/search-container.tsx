@@ -1,47 +1,57 @@
+import * as QueryString from 'query-string';
 import * as React from 'react';
-import  * as QueryString  from 'query-string';
 import styles from './search-container.module.scss';
-import { ISearchContainerProps, ISearchContainerState } from './search-container.int';
+import { Log } from '../../common/shared-lib';
+import { IPortalContext, PortalContext } from '../../common/portal-context';
 import { SearchBox } from 'office-ui-fabric-react';
-export class SearchContainer extends React.Component<ISearchContainerProps, ISearchContainerState> {
+import { ISearchContainerProps, ISearchContainerState } from "./search-container.int";
 
-    constructor(props: ISearchContainerProps) {
-        super(props);
+export default function SearchContainer(props: ISearchContainerProps) {
+	const context = React.useContext(PortalContext);
+	const initQueryText = getQueryText(context.properties.queryStringParameter);
+	const [state, setState] = React.useState<ISearchContainerState>({
+		queryText: initQueryText,
+	});
 
-        let queryString = QueryString.parseUrl(location.href, {}).query;
-        let qt = queryString[props.queryStringParameter] as string;
-        let debugManifestsFile = queryString.debugManifestsFile as string;
-        let loadSPFX = queryString.loadSPFX as string;
-        let customActions = queryString.customActions as string;
+	return (
+		<div className={styles.searchContainer}>
+			<SearchBox
+				value={state.queryText}
+				placeholder={context.properties.placeholderText}
+				onChange={(event) => {
+					const newQueryText =
+						event && event.currentTarget ? event.currentTarget.value : "";
+					setState({
+						queryText: newQueryText,
+					});
+				}}
+				onSearch={() => {
+					handleOnSearch(context, state.queryText);
+				}}
+			/>
+		</div>
+	);
 
-        
+	function handleOnSearch(ctx, queryText: string) {
+		if (queryText !== undefined || queryText !== null) {
+			queryText = queryText.trim();
+			if (queryText.length > 0) {
+				const { searchPageUrl, queryStringParameter } = ctx.properties;
+				const { isDebugging, debugParameters } = ctx.debug;
+				let newUrl = `${searchPageUrl}?${queryStringParameter}=${encodeURIComponent(
+					queryText
+				)}`;
+				newUrl += isDebugging ? `&${debugParameters}` : ``;
+				Log.info(`SearchContainer.handleOnSearch`, `Navigating to "${newUrl}"`);
+				window.location.href = newUrl;
+			}
+		}
+	}
+}
 
-        this.state = {
-					queryText: qt ? qt : ``,
-					debugParams:
-						debugManifestsFile && loadSPFX && customActions
-							? `&debugManifestsFile=${encodeURIComponent(debugManifestsFile)}&loadSPFX=${loadSPFX}&customActions=${customActions}`
-							: ``,
-				};
-    }
+function getQueryText(queryStringParameter: string) {
+	let queryString = QueryString.parseUrl(location.href, {}).query;
+	let queryText = queryString[queryStringParameter];
 
-    public render() {
-        return (
-            <div className={styles.searchContainer}>
-                <SearchBox 
-                    placeholder={this.props.placeholderText}
-                    value={this.state.queryText} 
-                    onChange={(event) => this.setState({ queryText: event && event.currentTarget ? event.currentTarget.value : "" })} 
-                    onSearch={() => this.handleOnSearch(this.state.queryText)}/>
-            </div>
-        );
-    }
-
-    private handleOnSearch(queryText: string) {
-        const { searchPageUrl, queryStringParameter, portalContext } = this.props;
-        const { isDebugging, debugParameters } = portalContext;
-        let newUrl = `${searchPageUrl}?${queryStringParameter}=${encodeURIComponent(queryText)}`;
-        newUrl += (isDebugging) ? `&${debugParameters}` : ``; 
-        window.location.href = newUrl;
-    }
+	return `${queryText ? queryText : ""}` as string;
 }

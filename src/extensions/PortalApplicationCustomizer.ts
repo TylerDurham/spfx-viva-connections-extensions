@@ -4,40 +4,60 @@ import * as strings from 'PortalApplicationCustomizerStrings';
 import styles from './PortalApplicationCustomizer.module.scss';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { CONSTANTS, Log, printObject } from '../common/shared-lib';
-import { Portal } from './components/portal-container';
-import getPortalContext from '../common/portal-context';
+import Portal from './components/portal-container';
+import { initializeContext } from '../common/portal-context';
+import * as Url from 'url-parse';
+import { IPortalApplicationCustomizerProps } from './IPortalApplicationCustomizerProps';
 
 const LOG_SOURCE = "PortalApplicationCustomizer";
 
-/**
- * If your command set uses the ClientSideComponentProperties JSON input,
- * it will be deserialized into the BaseExtension.properties object.
- * You can define an interface to describe it.
- */
-export interface IPortalApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  searchPageUrl: string;
-  queryStringParameter: string;
-  placeholderText: string;
-}
-
-const portalContext = getPortalContext(location.href);
-
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class PortalApplicationCustomizer
-  extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
+  extends BaseApplicationCustomizer<IPortalApplicationCustomizerProps> {
 
   private topPlaceholder: PlaceholderContent | undefined;
+  private portalContext;
 
   public onInit(): Promise<void> {
-    
-    Log.info(LOG_SOURCE, `Initialized with portal context: ${printObject(portalContext)}`);
+
+    this.portalContext = initializeContext(this.context, this.properties);
+
+    Log.info(LOG_SOURCE, `Initialized with portal context:`);
+    Log.info(LOG_SOURCE, this.portalContext);
 
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
     this.context.placeholderProvider.changedEvent.add(this, this.renderPlaceHolders);
 
     return Promise.resolve();
+  }
+
+  
+  private checkSearchPageUrl(url: string) {
+    if(url === undefined || url === null || url.trim().length == 0) {
+      // Defaut value
+      url = "/_layouts/15/search.aspx/";
+    }
+
+    // Realative URL
+    if (url.indexOf("/") == 0) return this.context.pageContext.web.absoluteUrl + url;
+  }
+
+  private checkQueryStringParameter(queryStringParameter: string) {
+    if (this.isNullOrEmpty(queryStringParameter)) {
+      // Default value.
+      queryStringParameter = "q";
+    }
+    return queryStringParameter;
+  }
+
+  private isNullOrEmpty<T>(v: T) {
+    if (v === undefined || v === null ) return true;
+    if(typeof v === 'string') {
+      return (v.trim().length === 0);
+    }
+
+    return false;
   }
 
   private isInIFrame() {
@@ -72,11 +92,7 @@ export default class PortalApplicationCustomizer
           Log.info(LOG_SOURCE, `Attempting to render app portal in TOP placeholder with the properties ${printObject(this.properties)}`);
 
           const portal = React.createElement(Portal, {
-            homePageUrl: this.context.pageContext.site.absoluteUrl,
-            searchPageUrl: `${this.context.pageContext.web.absoluteUrl}${this.properties.searchPageUrl}`,
-            queryStringParameter: this.properties.queryStringParameter,
-            placeholderText: this.properties.placeholderText,
-            portalContext: portalContext
+            portalContext: this.portalContext
           });
           ReactDOM.render(portal, this.topPlaceholder.domElement);
 
@@ -88,3 +104,34 @@ export default class PortalApplicationCustomizer
     }
   }
 }
+
+
+/*
+
+private initPortalContext() {
+    
+    const props = this.properties;
+
+    // TODO: Get Home Site URL?
+    const webUrl = this.context.pageContext.web.absoluteUrl;
+    const searchPageUrl = this.checkSearchPageUrl(this.properties.searchPageUrl);
+    const queryStringParameter = this.checkQueryStringParameter(this.properties.queryStringParameter);
+  
+    return {
+      isDebugging: isDebugging,
+      debugParameters: debugParameters,
+      properties: {
+        homePageUrl: webUrl,
+        searchPageUrl: searchPageUrl,
+        queryStringParameter: queryStringParameter,
+        placeholderText: props.placeholderText
+      },
+      req: {
+        url: location.href,
+        query: query
+      }
+    };
+  }
+
+
+*/

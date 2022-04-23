@@ -7,8 +7,14 @@ const CONSTANTS = {
 
 Object.freeze(CONSTANTS);
 
-const DEFAULTS = {
-    searchPageUrl: `/_layouts/15/search.aspx`
+const DEFAULTS = {    
+    searchPageUrl: `/_layouts/15/search.aspx`,
+    queryStringParameter: `q`,
+    placeholderText: `Search in SharePoint...`,
+    debug: {
+        isDebugging: false,
+        debugParameters: undefined
+    }
 };
 
 const Log = {
