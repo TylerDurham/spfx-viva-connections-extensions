@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as URLParse from 'url-parse';
 import * as Url from 'url-parse';
-import PortalApplicationCustomizer from '../extensions/PortalApplicationCustomizer';
 import { IPortalApplicationCustomizerProps } from "../extensions/IPortalApplicationCustomizerProps";
-import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 interface IPortalContextProperties extends IPortalApplicationCustomizerProps {
@@ -12,18 +10,20 @@ interface IPortalContextProperties extends IPortalApplicationCustomizerProps {
     homePageUrl: string;
     [key: string]: string | boolean | number;
 }
+export interface IDebugContext {
+    isDebugging: boolean;
+    debugParameters: string;
+}
 
+export interface IRequestContext {
+    url: string;
+    query: Record<string, string>;
+}
 export interface IPortalContext {
     isLoaded: boolean;
-    debug: {
-        isDebugging: boolean;
-        debugParameters: string;
-    },
-    properties?: IPortalContextProperties;
-    req: {
-        url: string,
-        query: Record<string, string>
-    };
+    debug: IDebugContext;
+    properties: IPortalContextProperties;
+    req: IRequestContext;
 }
 
 const defaultContext: IPortalContext = {
@@ -51,11 +51,10 @@ const initializeContext = (appContext: ApplicationCustomizerContext, appProps: I
     const url = new Url(location.href, true);
     const query = url.query;
 
-    // Debug info
-    const { isDebugging, debugParameters } = getDebugParameters(query);
-
+    // What is the base URL?
     const baseUrl = appContext.pageContext.web.absoluteUrl;
 
+    // Debug info
     context.debug = getDebugParameters(query);
 
     // Assign context properties, and validate their input
