@@ -28,11 +28,11 @@ class SharePointService {
             return response.json()
                 .then((json) => {
                     return {
-                        siteId: json.SiteId,
-                        webId: json.WebId,
-                        title: json.Title,
-                        url: json.Url,
-                        logoUrl: json.LogoUrl
+                        siteId: json.SiteId.trim(),
+                        webId: json.WebId.trim(),
+                        title: json.Title.trim(),
+                        url: json.Url.trim(),
+                        logoUrl: json.LogoUrl.trim()
                     };
                 });
         });

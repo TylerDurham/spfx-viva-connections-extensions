@@ -14,11 +14,11 @@ export const HomeButton = (props: IHomeButtonProps) => {
 	let title: string, url: string;
 	if (properties.homeSite) {
 		title = `Back to home site ${properties.homeSite.title}`;
-		url = `${properties.homeSite.url}&${debugParameters}`;
+		url = `${properties.homeSite.url}?${debugParameters}`;
 	} else {
 		const { homePageUrl } = properties;
 		title = `Back to ${homePageUrl}`;
-		url = `${homePageUrl}&${debugParameters}`;
+		url = `${homePageUrl}?${debugParameters}`;
 	}
 
 	return (
