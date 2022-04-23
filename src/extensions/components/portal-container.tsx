@@ -1,37 +1,26 @@
-import * as React from 'react';
-import styles from './portal-container.module.scss';
-import { HomeButton } from './home-button';
-import { IPortalProps, IPortalState } from './portal-container.int';
-import { Log, printObject } from '../../common/shared-lib';
-import { SearchContainer } from './search-container';
+import * as React from "react";
+import styles from "./portal-container.module.scss";
+import { HomeButton } from "./home-button";
+import { IPortalProps } from "./portal-container.interfaces";
+import { Log, printObject } from "../../common/shared-lib";
+import SearchContainer from "./search-container";
+import { PortalContext } from "../../common/portal-context";
 
 const LOG_SOURCE = "Portal";
 
-export class Portal extends React.Component<IPortalProps, IPortalState> {
+const Portal = (props: IPortalProps) => {
 
-    constructor(props: IPortalProps) {
-        super(props);
+    Log.info(LOG_SOURCE, `Initialized with ${printObject(props)}`);
 
-        Log.info(LOG_SOURCE, `Initialized with ${printObject(props)}`);
-    }
+	return (
+		<PortalContext.Provider value={props.portalContext}>
+			<div className={styles.portalContainer}>
+				<HomeButton />
 
-    public render() {
-        return (
-            <div className={styles.portalContainer}>
+				<SearchContainer />
+			</div>
+		</PortalContext.Provider>
+	);
+};
 
-                <HomeButton 
-                    homePageUrl={this.props.homePageUrl}
-                    portalContext={this.props.portalContext} />
-
-                <SearchContainer 
-                    queryStringParameter={this.props.queryStringParameter} 
-                    searchPageUrl={this.props.searchPageUrl}
-                    placeholderText={this.props.placeholderText}
-                    portalContext={this.props.portalContext} />
-
-            </div>
-        );
-    }
-
-}
-
+export default Portal;

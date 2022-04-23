@@ -5,8 +5,8 @@
     "application-portal-application-customizer": {
       "components": [
         {
-          "entrypoint": "./lib/extensions/PortalApplicationCustomizer.js",
-          "manifest": "./src/extensions/PortalApplicationCustomizer.manifest.json"
+          "entrypoint": "./lib/extensions/application-customizer.js",
+          "manifest": "./src/extensions/application-customizer.manifest.json"
         }
       ]
     },
