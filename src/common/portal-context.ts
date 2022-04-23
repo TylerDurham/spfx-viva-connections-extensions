@@ -3,6 +3,7 @@ import * as Url from 'url-parse';
 import { IApplicationCustomizerProps } from "../extensions/application-customizer.interfaces";
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import { IPortalContext } from './portal-context.interfaces';
+import SharePointService, { IHomeSite } from '../common/sharepoint-service';
 
 const DEFAULT_CONTEXT: IPortalContext = {
     isLoaded: false,
@@ -14,7 +15,8 @@ const DEFAULT_CONTEXT: IPortalContext = {
         searchPageUrl: `/_layouts/15/search.aspx`,
         queryStringParameter: `q`,
         placeholderText: `Search in SharePoint...`,
-        homePageUrl: `/`
+        homePageUrl: `/`,
+        homeSite: undefined
     },
     req: {
         url: undefined,
@@ -23,7 +25,7 @@ const DEFAULT_CONTEXT: IPortalContext = {
 };
 
 
-const initializeContext = (appContext: ApplicationCustomizerContext, appProps: IApplicationCustomizerProps) => {
+const initializeContext = async (appContext: ApplicationCustomizerContext, appProps: IApplicationCustomizerProps) => {
     const context = JSON.parse(JSON.stringify(DEFAULT_CONTEXT)) as IPortalContext;
 
     // What page are we on?
@@ -40,6 +42,7 @@ const initializeContext = (appContext: ApplicationCustomizerContext, appProps: I
     context.properties.homePageUrl = baseUrl; // TODO: Get Home Site URL as default
     context.properties.searchPageUrl = checkSearchPageUrl(baseUrl, appProps.searchPageUrl);
     context.properties.queryStringParameter = checkQueryStringParameter(appProps.queryStringParameter);
+    context.properties.homeSite = await getHomeSite(appContext);
 
     // Let clients have confidence 
     context.isLoaded = true;
@@ -90,6 +93,12 @@ function isNullOrEmpty<T>(v: T) {
     }
 
     return false;
+}
+
+async function getHomeSite(context):Promise<IHomeSite> {
+    const service = new SharePointService(context);
+    const homeSiteDetails = await service.getHomeSite();
+    return homeSiteDetails;
 }
 
 

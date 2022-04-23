@@ -19,7 +19,12 @@ const DEFAULTS = {
 
 const Log = {
     info(source: string, message: string | object) {
-        console.log(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
+        if (typeof message === 'object') {
+            console.log(CONSTANTS.LOG_SOURCE, `${source}:`);
+            console.log(message);
+        } else {
+            console.log(CONSTANTS.LOG_SOURCE, `${source}: ${message}`);
+        }
     },
 
     warn(source: string, message: string | object) {
