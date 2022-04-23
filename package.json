@@ -1,6 +1,6 @@
 {
   "name": "spfx-viva-connections-extensions",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "private": true,
   "main": "lib/index.js",
   "author": "TylerDurham <TylerDurham@users.noreply.github.com> (https://github.com/TylerDurham)",
