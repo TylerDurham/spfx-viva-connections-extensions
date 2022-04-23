@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./portal-container.module.scss";
 import { HomeButton } from "./home-button";
-import { IPortalProps } from "./portal-container.int";
+import { IPortalProps } from "./portal-container.interfaces";
 import { Log, printObject } from "../../common/shared-lib";
 import SearchContainer from "./search-container";
 import { PortalContext } from "../../common/portal-context";

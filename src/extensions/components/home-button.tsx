@@ -1,9 +1,10 @@
-import * as React from "react";
-import styles from "./home-button.module.scss";
-import {IconButton, IIconProps} from "office-ui-fabric-react";
-import {IHomeButtonProps} from "./home-button.int";
-import {Log} from "../../common/shared-lib"; 
-import {IPortalContext, PortalContext} from '../../common/portal-context';
+import * as React from 'react';
+import styles from './home-button.module.scss';
+import { IconButton, IIconProps } from 'office-ui-fabric-react';
+import { IHomeButtonProps } from './home-button.interfaces';
+import { IPortalContext } from '../../common/portal-context.interfaces';
+import { Log } from '../../common/shared-lib';
+import { PortalContext } from '../../common/portal-context';
 
 const icon: IIconProps = {iconName: "Home"};
 

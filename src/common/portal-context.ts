@@ -1,32 +1,10 @@
 import * as React from 'react';
-import * as URLParse from 'url-parse';
 import * as Url from 'url-parse';
-import { IPortalApplicationCustomizerProps } from "../extensions/IPortalApplicationCustomizerProps";
+import { IApplicationCustomizerProps } from "../extensions/application-customizer.interfaces";
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import { IPortalContext } from './portal-context.interfaces';
 
-interface IPortalContextProperties extends IPortalApplicationCustomizerProps {
-    queryStringParameter: string;
-    searchPageUrl: string;
-    homePageUrl: string;
-    [key: string]: string | boolean | number;
-}
-export interface IDebugContext {
-    isDebugging: boolean;
-    debugParameters: string;
-}
-
-export interface IRequestContext {
-    url: string;
-    query: Record<string, string>;
-}
-export interface IPortalContext {
-    isLoaded: boolean;
-    debug: IDebugContext;
-    properties: IPortalContextProperties;
-    req: IRequestContext;
-}
-
-const defaultContext: IPortalContext = {
+const DEFAULT_CONTEXT: IPortalContext = {
     isLoaded: false,
     debug: {
         debugParameters: undefined,
@@ -44,8 +22,9 @@ const defaultContext: IPortalContext = {
     }
 };
 
-const initializeContext = (appContext: ApplicationCustomizerContext, appProps: IPortalApplicationCustomizerProps) => {
-    const context = JSON.parse(JSON.stringify(defaultContext)) as IPortalContext;
+
+const initializeContext = (appContext: ApplicationCustomizerContext, appProps: IApplicationCustomizerProps) => {
+    const context = JSON.parse(JSON.stringify(DEFAULT_CONTEXT)) as IPortalContext;
 
     // What page are we on?
     const url = new Url(location.href, true);
@@ -67,10 +46,10 @@ const initializeContext = (appContext: ApplicationCustomizerContext, appProps: I
     return Object.freeze(context);
 };
 
-const PortalContext = React.createContext<IPortalContext>(defaultContext);
+const PortalContext = React.createContext<IPortalContext>(DEFAULT_CONTEXT);
 PortalContext.displayName = "PortalContext";
 
-export { PortalContext, initializeContext };
+export { PortalContext, initializeContext, IPortalContext };
 
 function getDebugParameters(query: Record<string, string>) {
     let isDebugging: boolean = false, debugParameters: string = ``;
@@ -86,7 +65,7 @@ function getDebugParameters(query: Record<string, string>) {
 function checkSearchPageUrl(baseUrl, url: string) {
     if (isNullOrEmpty(url)) {
         // Defaut value
-        url = defaultContext.properties.searchPageUrl;
+        url = DEFAULT_CONTEXT.properties.searchPageUrl;
     }
 
     // A relative URL was specified
@@ -99,7 +78,7 @@ function checkSearchPageUrl(baseUrl, url: string) {
 function checkQueryStringParameter(queryStringParameter: string) {
     if (isNullOrEmpty(queryStringParameter)) {
         // Default value.
-        queryStringParameter = defaultContext.properties.queryStringParameter;
+        queryStringParameter = DEFAULT_CONTEXT.properties.queryStringParameter;
     }
     return queryStringParameter;
 }

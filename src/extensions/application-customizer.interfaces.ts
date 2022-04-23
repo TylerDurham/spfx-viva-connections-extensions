@@ -4,7 +4,7 @@
  * You can define an interface to describe it.
  */
 
-export interface IPortalApplicationCustomizerProps {
+export interface IApplicationCustomizerProps {
   // This is an example; replace with your own property
   searchPageUrl: string;
   queryStringParameter: string;

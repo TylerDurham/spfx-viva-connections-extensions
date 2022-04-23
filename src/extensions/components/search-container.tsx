@@ -1,10 +1,10 @@
 import * as QueryString from 'query-string';
 import * as React from 'react';
 import styles from './search-container.module.scss';
+import { ISearchContainerProps, ISearchContainerState } from './search-container.interfaces';
 import { Log } from '../../common/shared-lib';
-import { IPortalContext, PortalContext } from '../../common/portal-context';
+import { PortalContext } from '../../common/portal-context';
 import { SearchBox } from 'office-ui-fabric-react';
-import { ISearchContainerProps, ISearchContainerState } from "./search-container.int";
 
 export default function SearchContainer(props: ISearchContainerProps) {
 	const context = React.useContext(PortalContext);

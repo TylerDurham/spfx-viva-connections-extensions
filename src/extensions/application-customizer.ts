@@ -1,19 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as strings from 'PortalApplicationCustomizerStrings';
-import styles from './PortalApplicationCustomizer.module.scss';
-import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
-import { CONSTANTS, Log, printObject } from '../common/shared-lib';
 import Portal from './components/portal-container';
+import styles from './application-customizer.module.scss';
+import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
+import { IApplicationCustomizerProps } from './application-customizer.interfaces';
 import { initializeContext } from '../common/portal-context';
-import * as Url from 'url-parse';
-import { IPortalApplicationCustomizerProps } from './IPortalApplicationCustomizerProps';
+import { Log, printObject } from '../common/shared-lib';
 
-const LOG_SOURCE = "PortalApplicationCustomizer";
+const LOG_SOURCE = "ApplicationCustomizer";
 
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class PortalApplicationCustomizer
-  extends BaseApplicationCustomizer<IPortalApplicationCustomizerProps> {
+  extends BaseApplicationCustomizer<IApplicationCustomizerProps> {
 
   private topPlaceholder: PlaceholderContent | undefined;
   private portalContext;

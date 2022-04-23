@@ -1,4 +1,4 @@
-import { IPortalContext } from "../../common/portal-context";
+import { IPortalContext } from "../../common/portal-context.interfaces";
 
 export interface ISearchContainerProps {
     
