@@ -15,9 +15,12 @@ const Portal = (props: IPortalProps) => {
 	return (
 		<PortalContext.Provider value={props.portalContext}>
 			<div className={styles.portalContainer}>
-				<HomeButton />
-
-				<SearchContainer />
+				<div>
+					<HomeButton />
+				</div>
+				<div>
+					<SearchContainer />
+				</div>
 			</div>
 		</PortalContext.Provider>
 	);
