@@ -1,10 +1,10 @@
 import { IApplicationCustomizerProps } from "../extensions/application-customizer.interfaces";
-
+import { IHomeSite } from './sharepoint-service';
 export interface IPortalContextProperties extends IApplicationCustomizerProps {
     queryStringParameter: string;
     searchPageUrl: string;
     homePageUrl: string;
-    [key: string]: string | boolean | number;
+    homeSite: IHomeSite;
 }
 export interface IDebugContext {
     isDebugging: boolean;

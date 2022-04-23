@@ -16,11 +16,16 @@ export default class PortalApplicationCustomizer
   private topPlaceholder: PlaceholderContent | undefined;
   private portalContext;
 
-  public onInit() {
+  public async onInit() {
 
-    this.portalContext = initializeContext(this.context, this.properties);
+    try {
+      this.portalContext = await initializeContext(this.context, this.properties);
 
-    Log.info(LOG_SOURCE, `Package (v. "${VersionInfo.package}") in solution (v. "${VersionInfo.solution}" Initialized with portal context:`);
+      Log.info(LOG_SOURCE, `Package (v. "${VersionInfo.package}") in solution (v. "${VersionInfo.solution}" Initialized with portal context:`);
+    } catch (err){
+      Log.warn(LOG_SOURCE, `Could not initialize context: ${err}`);
+      return;
+    }
     // Log.info(LOG_SOURCE, this.portalContext);
 
     // Wait for the placeholders to be created (or handle them being changed) and then
