@@ -8,7 +8,7 @@
     "clean": "gulp clean",
     "test": "gulp test",
     "preversion": "node ./tools/pre-version.js $npm_package_version",
-    "version": "git add -A ./config/package-solution.json",
+    "version": "git add -A ./config/package-solution.json ./common/version-info.ts",
     "postversion": "gulp clean",
     "ship": "gulp clean && gulp build && gulp bundle --ship && gulp package-solution --ship",
     "serve": "gulp bundle --custom-serve --max_old_space_size=4096 && fast-serve"
