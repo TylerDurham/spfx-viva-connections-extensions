@@ -3,7 +3,7 @@ import * as React from 'react';
 import styles from './search-container.module.scss';
 import { ISearchContainerProps, ISearchContainerState } from './search-container.interfaces';
 import { Log } from '../../common/shared-lib';
-import { PortalContext } from '../../common/portal-context';
+import { PortalContext, IPortalContext } from '../../common/portal-context';
 import { SearchBox } from 'office-ui-fabric-react';
 
 export default function SearchContainer(props: ISearchContainerProps) {
@@ -24,6 +24,10 @@ export default function SearchContainer(props: ISearchContainerProps) {
 					setState({
 						queryText: newQueryText,
 					});
+
+					if(state.queryText.trim().length >= 3) {
+						handleSearchSuggestions(context, state.queryText);
+					}
 				}}
 				onSearch={() => {
 					handleOnSearch(context, state.queryText);
@@ -31,6 +35,12 @@ export default function SearchContainer(props: ISearchContainerProps) {
 			/>
 		</div>
 	);
+
+	function handleSearchSuggestions(ctx: IPortalContext, queryText: string) {
+		ctx.services.spo.getSearchSuggestions(queryText).then((data) => {
+			Log.info("handleSearchSuggestions()", data)
+		})
+	}
 
 	function handleOnSearch(ctx, queryText: string) {
 		if (queryText !== undefined || queryText !== null) {

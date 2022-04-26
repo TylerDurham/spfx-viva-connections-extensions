@@ -3,6 +3,7 @@ import {
     SPHttpClient,
     SPHttpClientResponse
 } from '@microsoft/sp-http';
+import { Log } from './shared-lib';
 
 interface IHomeSite {
     siteId: string;
@@ -36,6 +37,19 @@ class SharePointService {
                     };
                 });
         });
+    }
+
+    public getSearchSuggestions(queryText: string) {
+        const url = `https://3bcdst.sharepoint.com/_api/search/suggest?queryText='${queryText}'`; 
+        //const url = `https://substrate.office.com/search/api/v1/suggestions?query=${queryText}&cvid=adb0c348-582c-6b83-be9e-f8b1caec25b3&scenario=HubSiteSearch&entityTypes=Text,Site,File,People&logicalId=5544cf2e-5faf-f98d-9af1-65c653302fe3&msgRequestId=e8ba9e0a-280e-6d53-6395-a315afd6398b`
+        Log.info("getSearchSuggestions():", url)       
+        return this.client.get(url, SPHttpClient.configurations.v1)
+            .then((response) => {
+                return response.json()
+                    .then((json) => {
+                        return json;
+                    });
+            });
     }
 }
 

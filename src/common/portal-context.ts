@@ -18,6 +18,9 @@ const DEFAULT_CONTEXT: IPortalContext = {
         homePageUrl: `/`,
         homeSite: undefined
     },
+    services: {
+        spo: undefined
+    },
     req: {
         url: undefined,
         query: undefined
@@ -27,6 +30,8 @@ const DEFAULT_CONTEXT: IPortalContext = {
 
 const initializeContext = async (appContext: ApplicationCustomizerContext, appProps: IApplicationCustomizerProps) => {
     const context = JSON.parse(JSON.stringify(DEFAULT_CONTEXT)) as IPortalContext;
+
+    const spoSvc = new SharePointService(appContext);
 
     // What page are we on?
     const url = new Url(location.href, true);
@@ -42,7 +47,9 @@ const initializeContext = async (appContext: ApplicationCustomizerContext, appPr
     context.properties.homePageUrl = baseUrl; // TODO: Get Home Site URL as default
     context.properties.searchPageUrl = checkSearchPageUrl(baseUrl, appProps.searchPageUrl);
     context.properties.queryStringParameter = checkQueryStringParameter(appProps.queryStringParameter);
-    context.properties.homeSite = await getHomeSite(appContext);
+    context.properties.homeSite = await spoSvc.getHomeSite();// getHomeSite(appContext);
+
+    context.services.spo = spoSvc;
 
     // Let clients have confidence 
     context.isLoaded = true;
