@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://3bcdst.sharepoint.com/",
       "customActions": {
         "7ec2d339-d5f1-4695-8143-45037097dc23": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "portal": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://3bcdst.sharepoint.com/",
       "customActions": {
         "7ec2d339-d5f1-4695-8143-45037097dc23": {
           "location": "ClientSideExtension.ApplicationCustomizer",

@@ -1,12 +1,16 @@
-import { Log } from '@microsoft/sp-core-library';
-import {
-  BaseApplicationCustomizer
-} from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
-
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as strings from 'PortalApplicationCustomizerStrings';
+import PortalContainer from './components/portal-container';
+import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
+import { Log } from '@microsoft/sp-core-library';
 
 const LOG_SOURCE: string = 'PortalApplicationCustomizer';
+
+// Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
+
+initializeIcons(/* optional base url */);
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -22,17 +26,22 @@ export interface IPortalApplicationCustomizerProperties {
 export default class PortalApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
 
+  private topPlaceholder: PlaceholderContent | undefined;
+  
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
+    if (!this.topPlaceholder) {
+      this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
+        PlaceholderName.Top,
+        { onDispose: () => { } }
+      );
 
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {
-      /* handle error */
-    });
+      const sb = React.createElement(PortalContainer);
+
+      ReactDOM.render(sb, this.topPlaceholder.domElement);
+
+    }
 
     return Promise.resolve();
   }

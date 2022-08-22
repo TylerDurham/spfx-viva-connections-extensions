@@ -1,0 +1,18 @@
+.portalContainer {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    line-height: 2.5;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .homeButtonContainer {
+        display: flex;
+    }
+
+    .searchBoxContainer {
+        width: 468PX;
+    }
+}
