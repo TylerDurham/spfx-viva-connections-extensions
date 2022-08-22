@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.15.2",
+    "libraryName": "spfx-viva-connections-extensions",
+    "libraryId": "1fe0d5a5-c73e-4bee-a3cd-6ab6aa56c565",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-viva-connections-extensions",
+    "solutionShortDescription": "spfx-viva-connections-extensions description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "extension",
+    "extensionType": "ApplicationCustomizer"
+  }
+}
