@@ -1,35 +1,43 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "spfx-viva-connections-extensions-client-side-solution",
-    "id": "1fe0d5a5-c73e-4bee-a3cd-6ab6aa56c565",
-    "version": "1.0.0.0",
+    "name": "SPFX Viva Connections Extensions",
+    "id": "206ee100-231e-460c-a16b-c9f0c2a0cac0",
+    "version": "0.3.18.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "iconPath": "images/app-icon.png",
     "developer": {
-      "name": "",
-      "websiteUrl": "",
+      "name": "TylerDurham <TylerDurham@users.noreply.github.com>",
+      "websiteUrl": "https://github.com/TylerDurham/spfx-viva-connections-extensions",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.15.2"
+      "mpnId": "Undefined-1.14.0"
     },
     "metadata": {
       "shortDescription": {
-        "default": "spfx-viva-connections-extensions description"
+        "default": "This extension provides a dedicated search box on every page in the Home Site when rendered in Viva Connections."
       },
       "longDescription": {
-        "default": "spfx-viva-connections-extensions description"
+        "default": "This extension provides a dedicated search box on every page in the Home Site when rendered in Viva Connections. It only appears within Viva Connections - it will not show up in the desktop browser!"
       },
-      "screenshotPaths": [],
+      "screenshotPaths": [
+        "images/screenshot-1.png",
+        "images/screenshot-2.png"
+      ],
       "videoUrl": "",
-      "categories": []
+      "categories": [
+        "Site Design",
+        "Legal + HR",
+        "IT/admin"
+      ]
     },
     "features": [
       {
         "title": "Application Extension - Deployment of custom action",
         "description": "Deploys a custom action with ClientSideComponentId association",
-        "id": "5a6106c4-ca71-4bae-88c4-8497ae2f44d2",
+        "id": "1b648b2f-eaf5-4dcd-ab1e-2fce25a13160",
         "version": "1.0.0.0",
         "assets": {
           "elementManifests": [
