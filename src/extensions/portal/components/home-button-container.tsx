@@ -5,11 +5,20 @@ import { IconButton, IIconProps } from '@fluentui/react';
 import { PortalContext } from '../../../common/portal-context';
 
 /**
+ * Handles the click() event of the IconButton. Redirects the browser to
+ * the URL specified in the arguments.
+ * @param url The URL to launch.
+ */
+const handleOnClick = (url: string): void => {
+    location.href = url;
+};
+
+/**
  * A React component that renders the "Home" button.
  * @param props Configuration properties for the component.
  * @returns The React component.
  */
-export default function HomeButtonContainer(props: IHomeButtonProps) {
+export default function HomeButtonContainer(props: IHomeButtonProps): React.ReactElement {
     
     const { homeSite } = React.useContext(PortalContext);
     
@@ -29,11 +38,3 @@ export default function HomeButtonContainer(props: IHomeButtonProps) {
     )
 }
 
-/**
- * Handles the click() event of the IconButton. Redirects the browser to
- * the URL specified in the arguments.
- * @param url The URL to launch.
- */
-const handleOnClick = (url: string): void => {
-    location.href = url;
-};

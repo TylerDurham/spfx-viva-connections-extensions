@@ -7,8 +7,6 @@ import { getPortalContext } from '../../common/portal-context';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
 import { log } from '../../common/diagnostics';
 
-const LOG_SOURCE: string = 'SPfX Viva Connections';
-
 // Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
 initializeIcons(/* optional base url */);
 
@@ -35,7 +33,7 @@ export default class PortalApplicationCustomizer
     if (!this.topPlaceholder) {
       this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
         PlaceholderName.Top,
-        { onDispose: () => { } }
+        { onDispose: () => { log(`Disposing.`) } }
       );
 
       const portalContext = await getPortalContext(this.context);

@@ -9,7 +9,7 @@
     "test": "gulp test",
     "version": "gulp build && node $INIT_CWD/pre-version.js $npm_package_version",
     "postversion": "git add -A $INIT_CWD/config/package-solution.json $INIT_CWD/src/common/version-info.ts & gulp clean",
-    "asdf": ""
+    "ship": "gulp clean && gulp build && gulp bundle --ship && gulp package-solution --ship"
   },
   "dependencies": {
     "@fluentui/react": "^8.90.1",
