@@ -11,7 +11,7 @@ const nextVersion = process.argv[2]
 
 console.log(process.argv);
 
-exit(0)
+
 
 // require filesystem instanc
 const fs = require('fs');
