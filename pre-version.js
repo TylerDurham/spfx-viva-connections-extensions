@@ -9,8 +9,13 @@ if (process.argv.length !== 3) {
 const nextVersion = process.argv[2]
     .split('-')[0]; // just in case of preminor, preemajor remove after third digit.
 
+console.log(process.argv[2]);
+
+exit(0)
+
 // require filesystem instanc
 const fs = require('fs');
+const { exit } = require('process');
 
 // define path to package-solution file
 const solution = './config/package-solution.json';
