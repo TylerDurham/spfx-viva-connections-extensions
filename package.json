@@ -1,6 +1,6 @@
 {
   "name": "spfx-viva-connections-extensions",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "private": true,
   "main": "lib/index.js",
   "scripts": {
