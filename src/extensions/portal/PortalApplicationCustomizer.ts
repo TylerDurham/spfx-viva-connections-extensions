@@ -5,7 +5,7 @@ import PortalContainer from './components/portal-container';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { getPortalContext } from '../../common/portal-context';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
-import { Log } from '@microsoft/sp-core-library';
+import { log } from '../../common/diagnostics';
 
 const LOG_SOURCE: string = 'SPfX Viva Connections';
 
@@ -29,7 +29,8 @@ export default class PortalApplicationCustomizer
   private topPlaceholder: PlaceholderContent | undefined;
   
   public async onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
+    
+    log(`Initialized ${strings.Title}`);
 
     if (!this.topPlaceholder) {
       this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
