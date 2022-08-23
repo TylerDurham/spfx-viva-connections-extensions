@@ -3,13 +3,13 @@ import * as ReactDOM from 'react-dom';
 import * as strings from 'PortalApplicationCustomizerStrings';
 import PortalContainer from './components/portal-container';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
+import { getPortalContext } from '../../common/portal-context';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
 import { Log } from '@microsoft/sp-core-library';
 
-const LOG_SOURCE: string = 'PortalApplicationCustomizer';
+const LOG_SOURCE: string = 'SPfX Viva Connections';
 
 // Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
-
 initializeIcons(/* optional base url */);
 
 /**
@@ -28,7 +28,7 @@ export default class PortalApplicationCustomizer
 
   private topPlaceholder: PlaceholderContent | undefined;
   
-  public onInit(): Promise<void> {
+  public async onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
     if (!this.topPlaceholder) {
@@ -37,7 +37,10 @@ export default class PortalApplicationCustomizer
         { onDispose: () => { } }
       );
 
-      const sb = React.createElement(PortalContainer);
+      const portalContext = await getPortalContext(this.context);
+      const sb = React.createElement(PortalContainer, {
+        context: portalContext
+      });
 
       ReactDOM.render(sb, this.topPlaceholder.domElement);
 
