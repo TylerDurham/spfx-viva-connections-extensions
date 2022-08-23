@@ -7,8 +7,8 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "version": "gulp build && node ./pre-version.js $npm_package_version",
-    "postversion": "git add -A ./config/package-solution.json ./src/common/version-info.ts & gulp clean",
+    "version": "gulp build && node $PWD/pre-version.js $npm_package_version",
+    "postversion": "git add -A $PWD/config/package-solution.json $PWD/src/common/version-info.ts & gulp clean",
     "asdf": ""
   },
   "dependencies": {
