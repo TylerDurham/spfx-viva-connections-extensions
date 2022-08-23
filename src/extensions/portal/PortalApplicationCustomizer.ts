@@ -1,20 +1,14 @@
-import { Log } from '@microsoft/sp-core-library';
-import {
-  BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
-} from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
-
-import * as strings from 'PortalApplicationCustomizerStrings';
-import VersionInfo from '../../common/version-info';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Foo } from './components/tmp';
+import * as strings from 'PortalApplicationCustomizerStrings';
+import PortalContainer from './components/portal-container';
+import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
+import { getPortalContext } from '../../common/portal-context';
+import { initializeIcons } from 'office-ui-fabric-react'
+import { log } from '../../common/diagnostics';
 
-
-
-
-
-const LOG_SOURCE: string = 'PortalApplicationCustomizer';
+// Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
+initializeIcons(/* optional base url */);
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -31,26 +25,25 @@ export default class PortalApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
 
   private topPlaceholder: PlaceholderContent | undefined;
-  public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
+  
+  public async onInit(): Promise<void> {
+    
+    log(`Initialized ${strings.Title}`);
 
     if (!this.topPlaceholder) {
       this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
         PlaceholderName.Top,
-        { onDispose: () => { } }
+        { onDispose: () => { log(`Disposing.`) } }
       );
+
+      const portalContext = await getPortalContext(this.context);
+      const sb = React.createElement(PortalContainer, {
+        context: portalContext
+      });
+
+      ReactDOM.render(sb, this.topPlaceholder.domElement);
+
     }
-
-    let v = VersionInfo.solution;
-    let message = `Version: ` + v;
-
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {
-      /* handle error */
-    });
-
-    const el = React.createElement(Foo);
-
-    ReactDOM.render(el, this.topPlaceholder.domElement)
 
     return Promise.resolve();
   }
