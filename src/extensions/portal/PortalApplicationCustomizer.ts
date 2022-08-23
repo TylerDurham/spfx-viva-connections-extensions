@@ -1,11 +1,14 @@
 import { Log } from '@microsoft/sp-core-library';
 import {
-  BaseApplicationCustomizer
+  BaseApplicationCustomizer, PlaceholderContent, PlaceholderName
 } from '@microsoft/sp-application-base';
 import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'PortalApplicationCustomizerStrings';
 import VersionInfo from '../../common/version-info';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Foo } from './components/tmp';
 
 
 
@@ -27,8 +30,16 @@ export interface IPortalApplicationCustomizerProperties {
 export default class PortalApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
 
+  private topPlaceholder: PlaceholderContent | undefined;
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
+
+    if (!this.topPlaceholder) {
+      this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
+        PlaceholderName.Top,
+        { onDispose: () => { } }
+      );
+    }
 
     let v = VersionInfo.solution;
     let message = `Version: ` + v;
@@ -36,6 +47,10 @@ export default class PortalApplicationCustomizer
     Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {
       /* handle error */
     });
+
+    const el = React.createElement(Foo);
+
+    ReactDOM.render(el, this.topPlaceholder.domElement)
 
     return Promise.resolve();
   }
