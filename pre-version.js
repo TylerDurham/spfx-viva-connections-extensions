@@ -17,6 +17,8 @@ console.log(process.argv);
 const fs = require('fs');
 const { exit } = require('process');
 
+console.log(process.env)
+
 // define path to package-solution file
 const solution = './config/package-solution.json';
 
