@@ -7,7 +7,7 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "preversion": "gulp build && node ./tools/pre-version.js $npm_package_version",
+    "preversion": "node ./preversion.js $npm_new_version",
     "version": "git add -A ./config/package-solution.json ./src/common/version-info.ts",
     "postversion": "gulp clean",
     "ship": "gulp clean && gulp build && gulp bundle --ship && gulp package-solution --ship",
