@@ -5,6 +5,11 @@ import {
 import { Dialog } from '@microsoft/sp-dialog';
 
 import * as strings from 'PortalApplicationCustomizerStrings';
+import VersionInfo from '../../common/version-info';
+
+
+
+
 
 const LOG_SOURCE: string = 'PortalApplicationCustomizer';
 
@@ -25,10 +30,8 @@ export default class PortalApplicationCustomizer
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
+    let v = VersionInfo.solution;
+    let message = `Version: ` + v;
 
     Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`).catch(() => {
       /* handle error */
