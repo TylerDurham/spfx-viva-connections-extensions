@@ -7,9 +7,9 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "preversion": "gulp build && node ./pre-version.js $npm_package_version",
-    "version": "git add -A ./config/package-solution.json ./src/common/version-info.ts",
-    "postversion": "gulp clean"
+    "version": "gulp build && node ./pre-version.js $npm_package_version",
+    "postversion": "git add -A ./config/package-solution.json ./src/common/version-info.ts & gulp clean",
+    "asdf": ""
   },
   "dependencies": {
     "@fluentui/react": "^8.90.1",
