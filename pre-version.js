@@ -9,9 +9,6 @@ if (process.argv.length !== 3) {
 const nextVersion = process.argv[2]
     .split('-')[0]; // just in case of preminor, preemajor remove after third digit.
 
-console.log(process.argv);
-
-
 
 // require filesystem instanc
 const fs = require('fs');
