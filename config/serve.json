@@ -6,7 +6,7 @@
     "default": {
       "pageUrl": "https://3bcdst.sharepoint.com/",
       "customActions": {
-        "7ec2d339-d5f1-4695-8143-45037097dc23": {
+        "2a101aba-e680-4d60-8d32-b49489038afc": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "testMessage": "Test message"
@@ -17,7 +17,7 @@
     "portal": {
       "pageUrl": "https://3bcdst.sharepoint.com/",
       "customActions": {
-        "7ec2d339-d5f1-4695-8143-45037097dc23": {
+        "2a101aba-e680-4d60-8d32-b49489038afc": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
             "testMessage": "Test message"
