@@ -1,7 +1,7 @@
-import { getHomeSite, IHomeSite } from "./sharepoint-service";
+import { getHomeSite, ISpoHomeSite } from "./sharepoint-service";
 
 interface IPortalContext {
-    homeSite: IHomeSite | undefined;
+    homeSite: ISpoHomeSite | undefined;
 }
 
 import * as React from "react";

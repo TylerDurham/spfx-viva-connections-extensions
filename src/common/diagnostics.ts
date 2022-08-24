@@ -1,34 +1,48 @@
-export const LOG_SOURCE: string = 'SPfX Viva Connections';
+export const APP_NAME: string = 'SPfX Viva Connections';
 
-export const log = (message: string | object, module?: string): boolean => {
-    const prefix = `${LOG_SOURCE}${(module === undefined) ? '' : '=>' + module}: `
-    if (typeof message === 'object') {
-        console.log(`${prefix.toUpperCase()} ${JSON.stringify(message, null, 3)}`);
-    } else {
-        console.log(`${prefix.toUpperCase()} ${message}`);
-    }
-
-    return true;
+/**
+ * Formats the string that will be prefixed to every log entry.
+ * @param moduleName Optional name of the module writing to the log.
+ * @returns A formatted prefix string.
+ */
+const formatPrefix = (moduleName: string | undefined): string => {
+    return `${APP_NAME}${(moduleName === undefined)
+        ? ''
+        : '=>' + moduleName}: `
+        .toUpperCase();
 }
 
-export class LogTimer {
+/**
+ * 
+ * @param message 
+ * @param moduleName 
+ */
+export function log(message: string | object, moduleName?: string): void {
+    const prefix = formatPrefix(moduleName);
+    if (typeof message === 'object') {
+        console.log(`${prefix} ${JSON.stringify(message, null, 3)}`);
+    } else {
+        console.log(`${prefix} ${message}`);
+    }
+}
 
-    private start: number;
-    private module: string;
+/**
+ * 
+ */
+export class Timer {
 
-    constructor(module: string) {
-        this.start = new Date().getTime();
-        this.module = module;
+    /** Timestamp indicating the start of the timer. */
+    private _start: number;
+
+    /**
+     * Initializes the start of the timer.
+     */
+    constructor() {
+        this._start = new Date().getTime();
     }
 
-    public log(message: string | undefined) {
-        const end = new Date().getTime() - this.start;
-        if (message === undefined) {
-            message = `Time elapsed: ${end}`
-        } else {
-            message = message.replace('%0', end.toString())
-        }
-
-        log(message, this.module);
+    /** Returns the time elapsed since the timer was started, in milliseconds. */
+    public timeElapsed(): number {
+        return new Date().getTime() - this._start;
     }
 }
