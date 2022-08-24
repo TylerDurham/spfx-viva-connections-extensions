@@ -5,10 +5,12 @@ import PortalContainer from './components/portal-container';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { getPortalContext } from '../../common/portal-context';
 import { initializeIcons } from 'office-ui-fabric-react'
-import { log } from '../../common/diagnostics';
+import * as diag from '../../common/diagnostics';
 
 // Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
 initializeIcons(/* optional base url */);
+
+const MODULE_NAME = "PortalApplicationCustomizer";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -28,22 +30,25 @@ export default class PortalApplicationCustomizer
   
   public async onInit(): Promise<void> {
     
-    log(`Initialized ${strings.Title}`);
+    diag.log(`Initializing...`, MODULE_NAME);
+    const portalContext = await getPortalContext(this.context);
+    diag.log(portalContext, MODULE_NAME);      
 
     if (!this.topPlaceholder) {
       this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
         PlaceholderName.Top,
-        { onDispose: () => { log(`Disposing.`) } }
+        { onDispose: () => { diag.log(`Disposing.`, MODULE_NAME) } }
       );
 
-      const portalContext = await getPortalContext(this.context);
-      const sb = React.createElement(PortalContainer, {
+      const element = React.createElement(PortalContainer, {
         context: portalContext
-      });
+      });  
 
-      log(portalContext);
-
-      ReactDOM.render(sb, this.topPlaceholder.domElement);
+      try {
+        ReactDOM.render(element, this.topPlaceholder.domElement);
+      } catch (e) {
+        diag.error(`Could not render React element! ${e}`, MODULE_NAME);
+      }
 
     }
 
