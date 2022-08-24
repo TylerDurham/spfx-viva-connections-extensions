@@ -1,6 +1,6 @@
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
+import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import { LogTimer } from './diagnostics';
 import { SPHttpClient } from '@microsoft/sp-http';
-import { LogTimer } from "./diagnostics";
 
 export interface IHomeSite {
     siteId: string;
@@ -9,6 +9,7 @@ export interface IHomeSite {
     logoUrl: string;
     title: string;
 }
+
 export const getHomeSite = async (context: ApplicationCustomizerContext): Promise<IHomeSite> => {
     const timer = new LogTimer('sharepoint-service');
     const url = `${context.pageContext.web.absoluteUrl}/_api/SP.SPHSite/Details`;
@@ -24,6 +25,18 @@ export const getHomeSite = async (context: ApplicationCustomizerContext): Promis
                         url: json.Url.trim(),
                         logoUrl: json.LogoUrl.trim()
                     };
+                });
+        });
+}
+
+export const getSearchSuggestions = async (context: ApplicationCustomizerContext, queryText: string) => {
+    const url = `${context.pageContext.web.absoluteUrl}/_api/search/suggest?querytext='${queryText}'&showpeoplenamesuggestions=true&fprequerysuggestions=true`;
+
+    return context.spHttpClient.get(url, SPHttpClient.configurations.v1)
+        .then((response) => {
+            return response.json()
+                .then((json) => {
+                    return json
                 });
         });
 }
