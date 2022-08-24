@@ -41,6 +41,8 @@ export default class PortalApplicationCustomizer
         context: portalContext
       });
 
+      log(portalContext);
+
       ReactDOM.render(sb, this.topPlaceholder.domElement);
 
     }
