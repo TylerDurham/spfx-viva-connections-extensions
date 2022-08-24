@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as strings from 'PortalApplicationCustomizerStrings';
-import PortalContainer from './components/portal-container';
+import TopContainer from './components/top-container';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { getPortalContext } from '../../common/portal-context';
 import { initializeIcons } from 'office-ui-fabric-react'
@@ -38,9 +38,9 @@ export default class PortalApplicationCustomizer
       this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
         PlaceholderName.Top,
         { onDispose: () => { diag.log(`Disposing.`, MODULE_NAME) } }
-      );
+      ); 
 
-      const element = React.createElement(PortalContainer, {
+      const element = React.createElement(TopContainer, {
         context: portalContext
       });  
 
