@@ -26,6 +26,15 @@ export function log(message: string | object, moduleName?: string): void {
     }
 }
 
+export function error(message: string | object, moduleName?: string): void {
+    const prefix = formatPrefix(moduleName);
+    if (typeof message === 'object') {
+        console.error(`${prefix} ${JSON.stringify(message, null, 3)}`);
+    } else {
+        console.error(`${prefix} ${message}`);
+    }
+}
+
 /**
  * 
  */
