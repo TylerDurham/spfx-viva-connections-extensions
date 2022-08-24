@@ -9,7 +9,7 @@ export interface ISpoHomeSite {
     /** The unique Id of the site. */                   siteId: string;
     /** The unique Id of the web */                     webId: string;
     /** The absolute url of the site */                 url: string;
-    /** The absolute url for the logo of the site */    logoUrl: string;
+    /** The relative url for the logo of the site */    logoUrl: string;
     /** The title of the site */                        title: string;
 }
 
