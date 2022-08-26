@@ -1,4 +1,6 @@
-import { getHomeSite, ISpoHomeSite } from "./sharepoint-service";
+import * as React from 'react';
+import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import { getHomeSite, ISpoHomeSite } from './sharepoint-service';
 
 interface IPortalContext {
     homeSite: ISpoHomeSite | undefined;
@@ -12,16 +14,11 @@ interface IDebugContext {
     loadSPFX: boolean;
 }
 
-import * as React from "react";
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
-import { UrlQueryParameterCollection } from "@microsoft/sp-core-library";
-
 const PortalContext = React.createContext<IPortalContext>({
     homeSite: undefined,
     debug: undefined
 });
 PortalContext.displayName = "PortalContext";
-
 
 const getPortalContext = async (context: ApplicationCustomizerContext): Promise<IPortalContext> => {
     const portalContext = {
