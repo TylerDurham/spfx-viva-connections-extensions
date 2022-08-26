@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import { getHomeSite, ISpoHomeSite } from './sharepoint-service';
-import { object } from 'prop-types';
+
 
 interface IPortalContext {
     homeSite: ISpoHomeSite | undefined;
