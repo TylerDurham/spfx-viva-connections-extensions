@@ -3,7 +3,7 @@
   "solution": {
     "name": "SPFX Viva Connections Extensions",
     "id": "4601df9c-7a93-4923-a840-e36ea4a9ba1f",
-    "version": "0.6.5.0",
+    "version": "0.6.7.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

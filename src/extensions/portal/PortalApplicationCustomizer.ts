@@ -41,7 +41,7 @@ export default class PortalApplicationCustomizer
     const portalContext = await getPortalContext(this.context);
     diag.log(portalContext, MODULE_NAME);
 
-    if (this.isInIFrame() === true || portalContext.debug.showInSpo === true) {
+    if (this.isInIFrame() === true || portalContext.debug.isDebugging === true || portalContext.debug.showInSpo === true) {
 
       if (!this.topPlaceholder) {
         this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
