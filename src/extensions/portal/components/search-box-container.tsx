@@ -19,14 +19,7 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
     });
     
     const handleOnClick = (searchText: string): void => {
-        let url = `${search.url}?${search.queryStringParameter}=${encodeURIComponent(searchText)}`;
-
-        if (debug.isDebugging) {
-            // Append SPFX debug state to URL.
-            const { debugManifestsFile, customActions, loadSPFX, showInSpo } = debug;
-            url = url + `&debugManifestsFile=${encodeURIComponent(debugManifestsFile)}&loadSPFX=${loadSPFX}&customActions=${customActions}&showInSpo=${showInSpo}`;
-        }
-
+        const url = `${search.url}?${search.queryStringParameter}=${encodeURIComponent(searchText)}&${debug.toQueryStringParams() }`;
         window.location.href = (url);
     }
 
