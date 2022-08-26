@@ -23,8 +23,8 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
 
         if (debug.isDebugging) {
             // Append SPFX debug state to URL.
-            const { debugManifestsFile, customActions, loadSPFX } = debug;
-            url = url + `&debugManifestsFile=${encodeURIComponent(debugManifestsFile)}&loadSPFX=${loadSPFX}&customActions=${customActions}`;
+            const { debugManifestsFile, customActions, loadSPFX, showInSpo } = debug;
+            url = url + `&debugManifestsFile=${encodeURIComponent(debugManifestsFile)}&loadSPFX=${loadSPFX}&customActions=${customActions}&showInSpo=${showInSpo}`;
         }
 
         window.location.href = (url);

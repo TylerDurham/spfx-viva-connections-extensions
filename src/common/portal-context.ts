@@ -13,6 +13,7 @@ interface IDebugContext {
     debugManifestsFile: string;
     customActions: string;
     loadSPFX: boolean;
+    showInSpo: boolean;
 }
 
 interface ISearchContext {
@@ -46,15 +47,24 @@ const getSearchContext = (): ISearchContext => {
     }
 }
 
+const getShowInSpo = () => {
+    const param = '' + (new URL(window.location.href))
+        .searchParams
+        .get("showInSpo");
+
+    return (param.toUpperCase() === 'TRUE' || param === '1');
+}
+
 const getDebugContext = (): IDebugContext => {
     const url = new URL(location.href)
     const customActions = url.searchParams.get("customActions");
     const loadSPFX = (url.searchParams.get("loadSPFX") == null) ? false : true;
     const debugManifestsFile = url.searchParams.get("debugManifestsFile");
     const isDebugging = (debugManifestsFile !== null && loadSPFX !== null && customActions !== null);
+    const showInSpo: boolean = getShowInSpo();
 
     return {
-        customActions, loadSPFX, debugManifestsFile, isDebugging
+        customActions, loadSPFX, debugManifestsFile, isDebugging, showInSpo
     }
 }
 

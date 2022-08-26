@@ -25,8 +25,8 @@ export default function HomeButtonContainer(props: IHomeButtonProps): React.Reac
         let url = `${homeSite.url}`;
         if (debug.isDebugging) {
             // Append SPFX debug state to URL.
-            const { debugManifestsFile, customActions, loadSPFX } = debug;
-            url = url + `?debugManifestsFile=${encodeURIComponent(debugManifestsFile)}&loadSPFX=${loadSPFX}&customActions=${customActions}`;
+            const { debugManifestsFile, customActions, loadSPFX, showInSpo } = debug;
+            url = url + `?debugManifestsFile=${encodeURIComponent(debugManifestsFile)}&loadSPFX=${loadSPFX}&customActions=${customActions}&showInSpo=${showInSpo}`;
         }
 
         location.href = url;

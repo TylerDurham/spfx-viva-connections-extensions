@@ -27,29 +27,40 @@ export default class PortalApplicationCustomizer
   extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
 
   private topPlaceholder: PlaceholderContent | undefined;
-  
+
+  private isInIFrame() {
+    try {
+      return window.self !== window.top;
+    } catch (e) {
+      return true;
+    }
+  }
+
   public async onInit(): Promise<void> {
-    
+
     diag.log(`Initializing...`, MODULE_NAME);
     const portalContext = await getPortalContext(this.context);
-    diag.log(portalContext, MODULE_NAME);      
+    diag.log(portalContext, MODULE_NAME);
 
-    if (!this.topPlaceholder) {
-      this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
-        PlaceholderName.Top,
-        { onDispose: () => { diag.log(`Disposing.`, MODULE_NAME) } }
-      ); 
+    if (this.isInIFrame() === true || portalContext.debug.showInSpo === true) {
 
-      const element = React.createElement(TopContainer, {
-        context: portalContext
-      });  
+      if (!this.topPlaceholder) {
+        this.topPlaceholder = this.context.placeholderProvider.tryCreateContent(
+          PlaceholderName.Top,
+          { onDispose: () => { diag.log(`Disposing.`, MODULE_NAME) } }
+        );
 
-      try {
-        ReactDOM.render(element, this.topPlaceholder.domElement);
-      } catch (e) {
-        diag.error(`Could not render React element! ${e}`, MODULE_NAME);
+        const element = React.createElement(TopContainer, {
+          context: portalContext
+        });
+
+        try {
+          ReactDOM.render(element, this.topPlaceholder.domElement);
+        } catch (e) {
+          diag.error(`Could not render React element! ${e}`, MODULE_NAME);
+        }
+
       }
-
     }
 
     return Promise.resolve();
