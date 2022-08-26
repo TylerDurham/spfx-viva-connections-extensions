@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as strings from 'PortalApplicationCustomizerStrings';
 import TopContainer from './components/top-container';
 import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '@microsoft/sp-application-base';
 import { getPortalContext } from '../../common/portal-context';
@@ -28,7 +27,7 @@ export default class PortalApplicationCustomizer
 
   private topPlaceholder: PlaceholderContent | undefined;
 
-  private isInIFrame() {
+  private isInIFrame(): boolean{
     try {
       return window.self !== window.top;
     } catch (e) {

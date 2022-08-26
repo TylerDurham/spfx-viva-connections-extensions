@@ -37,6 +37,7 @@ export const getHomeSite = async (context: ApplicationCustomizerContext): Promis
         });
 }
 
+/*
 export const getSearchSuggestions = async (context: ApplicationCustomizerContext, queryText: string) => {
     const url = `${context.pageContext.web.absoluteUrl}/_api/search/suggest?querytext='${queryText}'&showpeoplenamesuggestions=true&fprequerysuggestions=true`;
 
@@ -50,3 +51,4 @@ export const getSearchSuggestions = async (context: ApplicationCustomizerContext
                 });
         });
 }
+*/

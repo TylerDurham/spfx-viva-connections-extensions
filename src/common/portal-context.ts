@@ -29,25 +29,7 @@ const PortalContext = React.createContext<IPortalContext>({
 });
 PortalContext.displayName = "PortalContext";
 
-const getPortalContext = async (context: ApplicationCustomizerContext): Promise<IPortalContext> => {
-    const portalContext = {
-        debug: getDebugContext(),
-        homeSite: await getHomeSite(context),
-        search: getSearchContext()
-    }
-
-    return Object.freeze(portalContext);
-}
-
-const getSearchContext = (): ISearchContext => {
-    return {
-        placeholderText: "Search in SharePoint...",
-        queryStringParameter: "q",
-        url: "/_layouts/15/search.aspx",
-    }
-}
-
-const getShowInSpo = () => {
+const getShowInSpo = (): boolean => {
     const param = '' + (new URL(window.location.href))
         .searchParams
         .get("showInSpo");
@@ -58,7 +40,7 @@ const getShowInSpo = () => {
 const getDebugContext = (): IDebugContext => {
     const url = new URL(location.href)
     const customActions = url.searchParams.get("customActions");
-    const loadSPFX = (url.searchParams.get("loadSPFX") == null) ? false : true;
+    const loadSPFX = (url.searchParams.get("loadSPFX") === null) ? false : true;
     const debugManifestsFile = url.searchParams.get("debugManifestsFile");
     const isDebugging = (debugManifestsFile !== null && loadSPFX !== null && customActions !== null);
     const showInSpo: boolean = getShowInSpo();
@@ -66,6 +48,26 @@ const getDebugContext = (): IDebugContext => {
     return {
         customActions, loadSPFX, debugManifestsFile, isDebugging, showInSpo
     }
+}
+
+const getSearchContext = (): ISearchContext => {
+    const sc: ISearchContext = {
+        placeholderText: "Search in SharePoint...",
+        queryStringParameter: "q",
+        url: "/_layouts/15/search.aspx",
+    }
+
+    return sc;
+}
+
+const getPortalContext = async (context: ApplicationCustomizerContext): Promise<IPortalContext> => {
+    const portalContext = {
+        debug: getDebugContext(),
+        homeSite: await getHomeSite(context),
+        search: getSearchContext()
+    }
+
+    return Object.freeze(portalContext);
 }
 
 export { PortalContext, getPortalContext, IPortalContext }

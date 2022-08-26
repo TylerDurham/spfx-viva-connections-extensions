@@ -18,7 +18,7 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
         queryText: getQueryText(search.queryStringParameter),
     });
     
-    const handleOnClick = (searchText: string) => {
+    const handleOnClick = (searchText: string): void => {
         let url = `${search.url}?${search.queryStringParameter}=${encodeURIComponent(searchText)}`;
 
         if (debug.isDebugging) {
@@ -47,9 +47,9 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
     )
 }
 
-function getQueryText(queryStringParameter: string) {
+function getQueryText(queryStringParameter: string): string {
     const url = new URL(window.location.href);
-    let queryText = url.searchParams.get(queryStringParameter);
+    const queryText = url.searchParams.get(queryStringParameter);
 
     return `${queryText ? queryText : ""}` as string;
 }

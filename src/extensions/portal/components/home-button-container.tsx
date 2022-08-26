@@ -21,7 +21,7 @@ export default function HomeButtonContainer(props: IHomeButtonProps): React.Reac
     };
 
     // Handle Icon Button onClick
-    const handleOnClick = () => {
+    const handleOnClick = (): void => {
         let url = `${homeSite.url}`;
         if (debug.isDebugging) {
             // Append SPFX debug state to URL.
