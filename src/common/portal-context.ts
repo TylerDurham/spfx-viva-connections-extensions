@@ -5,6 +5,7 @@ import { getHomeSite, ISpoHomeSite } from './sharepoint-service';
 interface IPortalContext {
     homeSite: ISpoHomeSite | undefined;
     debug: IDebugContext | undefined;
+    search: ISearchContext | undefined;
 }
 
 interface IDebugContext {
@@ -14,19 +15,35 @@ interface IDebugContext {
     loadSPFX: boolean;
 }
 
+interface ISearchContext {
+    placeholderText: string;
+    queryStringParameter: string;
+    url: string;
+}
+
 const PortalContext = React.createContext<IPortalContext>({
     homeSite: undefined,
-    debug: undefined
+    debug: undefined,
+    search: undefined
 });
 PortalContext.displayName = "PortalContext";
 
 const getPortalContext = async (context: ApplicationCustomizerContext): Promise<IPortalContext> => {
     const portalContext = {
+        debug: getDebugContext(),
         homeSite: await getHomeSite(context),
-        debug: getDebugContext()
+        search: getSearchContext()
     }
 
     return Object.freeze(portalContext);
+}
+
+const getSearchContext = (): ISearchContext => {
+    return {
+        placeholderText: "Search in SharePoint...",
+        queryStringParameter: "q",
+        url: "/_layouts/15/search.aspx",
+    }
 }
 
 const getDebugContext = (): IDebugContext => {
