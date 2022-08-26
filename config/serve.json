@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://3bcdst.sharepoint.com/",
+      "customActions": {
+        "1b4b0d0d-cbce-44b1-baaa-f14aa216649e": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Upgraded to new SPFX!"
+          }
+        }
+      }
+    },
+    "portal": {
+      "pageUrl": "https://3bcdst.sharepoint.com/",
+      "customActions": {
+        "1b4b0d0d-cbce-44b1-baaa-f14aa216649e": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Upgraded to new SPFX!"
+          }
+        }
+      }
+    }
+  }
+}
