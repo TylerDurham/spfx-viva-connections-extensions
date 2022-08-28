@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ISearchContainerProps from './interfaces';
 import SearchHistory from '../../common/search-history';
-import SearchSuggestions from '../../extensions/portal/components/search-suggestions';
+import SearchSuggestions from '../search-suggestions'
 
 import { log } from '../../common/diagnostics';
 import { PortalContext } from '../../common/portal-context';

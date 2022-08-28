@@ -30,7 +30,7 @@ export default function HomeButton(props: IHomeButtonProps): React.ReactElement 
     }
 
     return (
-        <div className={styles.homeButton}>
+        <div className={styles['home-button']}>
             <IconButton 
                 iconProps={iconProps} 
                 onClick={() => handleOnClick()}>

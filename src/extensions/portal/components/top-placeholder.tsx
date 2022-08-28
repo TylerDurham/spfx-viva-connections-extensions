@@ -1,11 +1,16 @@
 import * as React from 'react';
 import HomeButton from '../../../components/home-button';
-import IPortalContainerProps from './iportal-container-props';
 import SearchContainer from '../../../components/search-container';
 import styles from '../../../components/global.module.scss';
-import { PortalContext } from '../../../common/portal-context';
+import { IPortalContext, PortalContext } from '../../../common/portal-context';
 
-export default function TopContainer(props: IPortalContainerProps): React.ReactElement {
+const MODULE_NAME = "top-placeholder.tsx";
+
+export interface IPortalContainerProps {
+    context: IPortalContext;
+}
+
+export default function TopPlaceholder(props: IPortalContainerProps): React.ReactElement {
     return (
         <PortalContext.Provider value={props.context}>
             <div className={ styles.top }>
@@ -13,6 +18,7 @@ export default function TopContainer(props: IPortalContainerProps): React.ReactE
                 <HomeButton></HomeButton>
 
                 <SearchContainer></SearchContainer>
+                
             </div> 
         </PortalContext.Provider>
     )

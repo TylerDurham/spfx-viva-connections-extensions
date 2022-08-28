@@ -1,16 +1,14 @@
-import { Icon } from 'office-ui-fabric-react';
 import * as React from 'react';
-import { log } from '../../../common/diagnostics';
-import { PortalContext } from '../../../common/portal-context';
-import { ISearchHistoryItem } from '../../../common/search-history';
-import { getSearchSuggestions, ISpoSearchQuery, ISpoSearchSuggestions } from '../../../common/sharepoint-service';
 import styles from './search-suggestions.module.scss';
+import { getSearchSuggestions, ISpoSearchQuery, ISpoSearchSuggestions } from '../../common/sharepoint-service';
+import { Icon } from 'office-ui-fabric-react';
+import { ISearchHistoryItem } from '../../common/search-history';
+import { ISearchSuggestionsProps } from './interfaces';
+import { log } from '../../common/diagnostics';
+import { PortalContext } from '../../common/portal-context';
 
 const MODULE_NAME = "search-suggestions.tsx";
-export interface ISearchSuggestionsProps {
-    queryText: string;
-    visible: boolean;
-}
+
 
 // interface ISearchSuggestionsState {
 //     queryText: string;
