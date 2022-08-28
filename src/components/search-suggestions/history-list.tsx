@@ -11,7 +11,7 @@ export interface IHistoryListProps {
     /** The list of items to render as a list. */
     items: ISearchHistoryItem[],
 
-    /** The text label to display. */
+    /** The text header to display. */
     headerText: string
 }
 
@@ -21,7 +21,7 @@ export default function HistoryList(props: IHistoryListProps): React.ReactElemen
 
     return (
         <div>
-            { props.headerText }
+            <b>{props.headerText}</b>
             <ul className={styles.searchSuggestionList}>
                 { props.items.map((item, index) => {
                     return (
