@@ -1,18 +1,20 @@
 import * as React from 'react';
-import * as styles from './portal-container.module.scss';
-import ISearchBoxContainerProps from './isearch-box-container-props';
-import SearchHistory from '../../../common/search-history';
-import SearchSuggestions from './search-suggestions';
-import { log } from '../../../common/diagnostics';
-import { PortalContext } from '../../../common/portal-context';
+
+import ISearchContainerProps from './interfaces';
+import SearchHistory from '../../common/search-history';
+
+import { log } from '../../common/diagnostics';
+import { PortalContext } from '../../common/portal-context';
 import { SearchBox } from 'office-ui-fabric-react';
+import styles from '../../extensions/portal/components/portal-container.module.scss';
+import SearchSuggestions from '../../extensions/portal/components/search-suggestions';
 
 interface ISearchContainerState {
     queryText: string;
     showSuggestions: boolean;
 }
 
-export default function SearchBoxContainer(props: ISearchBoxContainerProps): React.ReactElement {
+export default function SearchContainer(props: ISearchContainerProps): React.ReactElement {
 
     // Grab current context from React
     const { search, debug } = React.useContext(PortalContext);
@@ -57,14 +59,15 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: string): void => {
         setState({ queryText: newValue, showSuggestions: state.showSuggestions })
     }
+    
     const handleOnSearch = (searchText: string): void => {
         const url = `${search.url}?${search.queryStringParameter}=${encodeURIComponent(searchText)}&${debug.toQueryStringParams() }`;
         window.location.href = (url);
     }
 
     return (
-        <div className={styles.default.searchBoxContainer}>
-            <SearchBox 
+        <div className={styles.searchBoxContainer}>
+            <SearchBox
                 placeholder='Search in SharePoint' 
                 value={state.queryText} 
                 onChange={handleOnChange}

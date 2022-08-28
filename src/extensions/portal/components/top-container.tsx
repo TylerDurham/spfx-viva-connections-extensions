@@ -1,9 +1,10 @@
 import * as React from 'react';
 import IPortalContainerProps from './iportal-container-props';
-import SearchBoxContainer from './search-box-container';
+
 import * as styles from './portal-container.module.scss';
 import { PortalContext } from '../../../common/portal-context';
 import HomeButton from '../../../components/home-button';
+import SearchContainer from '../../../components/search-container';
 
 export default function TopContainer(props: IPortalContainerProps): React.ReactElement {
     return (
@@ -12,8 +13,8 @@ export default function TopContainer(props: IPortalContainerProps): React.ReactE
 
                 <HomeButton></HomeButton>
 
-                <SearchBoxContainer></SearchBoxContainer>
-            </div>
+                <SearchContainer></SearchContainer>
+            </div> 
         </PortalContext.Provider>
     )
 }
