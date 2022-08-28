@@ -28,6 +28,7 @@ export default function HistoryList(props: IHistoryListProps): React.ReactElemen
                         <li key={index}>
                             <span className={styles.icon}><Icon iconName='History' /></span>
                             <span className={styles.text}>{item.searchTerm}</span>
+                            <span>[Delete]</span>
                         </li>
                     )
                 })}
