@@ -1,23 +1,27 @@
-import { SearchBox } from 'office-ui-fabric-react';
+import { ComboBox, SearchBox } from 'office-ui-fabric-react';
 import * as React from 'react';
 import { log } from '../../../common/diagnostics';
 import SearchHistory from '../../../common/search-history';
 import { PortalContext } from '../../../common/portal-context';
 import ISearchBoxContainerProps from './isearch-box-container-props';
 import * as styles from './portal-container.module.scss';
+import { getSearchSuggestions } from '../../../common/sharepoint-service';
+import SearchSuggestions from './search-suggestions';
 
 interface ISearchContainerState {
     queryText: string;
+    showSuggestions: boolean;
 }
 
 export default function SearchBoxContainer(props: ISearchBoxContainerProps): React.ReactElement {
 
     // Grab current context from React
-    const { search, debug } = React.useContext(PortalContext);
+    const { app, search, debug } = React.useContext(PortalContext);
 
     // Grab queryText from URL
     const [state, setState] = React.useState<ISearchContainerState>({
         queryText: getQueryText(search.queryStringParameter),
+        showSuggestions: false
     });
 
     const searchHistory = new SearchHistory(search.maxSearchHistory);
@@ -43,12 +47,16 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
 
     document.addEventListener("click", handleOnClick);
 
-    const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>): void => {
-        log(searchHistory.find(state.queryText), "search-box-container")
+    const handleKeyUp = async (event: React.KeyboardEvent<HTMLInputElement>): Promise<void> => {
+
+        if (state.queryText.length < 3) { return; }
+            //const foo = await getSearchSuggestions(app, state.queryText)
+
+            //log(foo, "search-box-container");
     }
     
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>, newValue: string): void => {
-        setState({ queryText: newValue })
+        setState({ queryText: newValue, showSuggestions: state.showSuggestions })
     }
     const handleOnSearch = (searchText: string): void => {
         const url = `${search.url}?${search.queryStringParameter}=${encodeURIComponent(searchText)}&${debug.toQueryStringParams() }`;
@@ -62,7 +70,16 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
                 value={state.queryText} 
                 onChange={handleOnChange}
                 onKeyUp={handleKeyUp}
-                onSearch={handleOnSearch}></SearchBox>
+                onFocus={()=> {
+                    setState({ showSuggestions: true, queryText: state.queryText })
+                }} 
+                onBlur={() => {
+                    setState({ showSuggestions: false, queryText: state.queryText })
+                }}
+                onSearch={handleOnSearch}>
+
+            </SearchBox>
+           <SearchSuggestions visible={state.showSuggestions}  queryText={state.queryText} />
         </div>
     )
 }

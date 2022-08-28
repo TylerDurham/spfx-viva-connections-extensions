@@ -1,4 +1,4 @@
-interface ISearchHistoryItem {
+export interface ISearchHistoryItem {
     searchTerm: string;
     hits: number;
     lastUsed: Date;
@@ -61,6 +61,7 @@ export default class SearchHistory {
     }
 
     public find(searchTerm: string): ISearchHistoryItem[] {
+        if (this.items === null) { this.items = []}
         return this.items.filter((item) => {
             return item.searchTerm.toUpperCase().indexOf(searchTerm.toUpperCase()) > -1
         })
