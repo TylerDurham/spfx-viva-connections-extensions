@@ -2,40 +2,13 @@ import * as React from 'react';
 import styles from './search-suggestions.module.scss';
 import { getSearchSuggestions, ISpoSearchQuery, ISpoSearchSuggestions } from '../../common/sharepoint-service';
 import { Icon } from 'office-ui-fabric-react';
-import { ISearchHistoryItem } from '../../common/search-history';
 import { ISearchSuggestionsProps } from './interfaces';
 import { log } from '../../common/diagnostics';
 import { PortalContext } from '../../common/portal-context';
+import History from './history';
 
 /** Module Name for logging. */
 const MODULE_NAME = "search-suggestions.tsx";
-
-
-// interface ISearchSuggestionsState {
-//     queryText: string;
-//     suggestions: ISpoSearchSuggestions | undefined;
-// }
-
-const renderHistory = (history: ISearchHistoryItem[]): React.ReactElement => {
-    if (history.length === 0) return <></>;
-
-    return (
-        <div>
-            History
-            <ul className={styles.searchSuggestionList}>
-                {history.map((item, index) => {
-                    return (
-                        <li key={index}>
-                            <span className={styles.icon}><Icon iconName='History' /></span>
-                            <span className={styles.text}>{item.searchTerm}</span>
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
-
-    )
-}
 
 const renderQueries = (queries: ISpoSearchQuery[]): React.ReactElement => {
     if (queries.length === 0) return <></>;
@@ -108,7 +81,7 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps): React
         return (
 
             <div>
-                {renderHistory(searchSuggestions.History)}
+                <History text='History' items={searchSuggestions.History}></History>
 
                 {renderPeople(searchSuggestions.PeopleNames)}
 
