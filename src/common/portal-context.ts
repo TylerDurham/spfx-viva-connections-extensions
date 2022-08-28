@@ -2,32 +2,24 @@ import * as React from 'react';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import { getHomeSite, ISpoHomeSite } from './sharepoint-service';
 
-
 interface IPortalContext {
-    homeSite: ISpoHomeSite | undefined;
     debug: IDebugContext | undefined;
+    homeSite: ISpoHomeSite | undefined;
     search: ISearchContext | undefined;
 }
 interface ISearchContext {
+    maxSearchHistory: number;
     placeholderText: string;
     queryStringParameter: string;
     url: string;
 }
 
 const PortalContext = React.createContext<IPortalContext>({
-    homeSite: undefined,
     debug: undefined,
-    search: undefined
+    homeSite: undefined,
+    search: undefined,
 });
 PortalContext.displayName = "PortalContext";
-
-// this._getShowInSpo = (): boolean => {
-//     this._param = '' + (new URL(window.location.href))
-//         .searchParams
-//         .get("showInSpo");
-
-//     return (param.toUpperCase() === 'TRUE' || param === '1');
-// }
 
 interface IDebugContext {
     customActions: string;
@@ -74,6 +66,7 @@ class DebugContext implements IDebugContext {
 
 const getSearchContext = (): ISearchContext => {
     const sc: ISearchContext = {
+        maxSearchHistory: 5,
         placeholderText: "Search in SharePoint...",
         queryStringParameter: "q",
         url: "/_layouts/15/search.aspx",
