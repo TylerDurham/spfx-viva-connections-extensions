@@ -1,13 +1,11 @@
 import * as React from 'react';
-
 import ISearchContainerProps from './interfaces';
 import SearchHistory from '../../common/search-history';
-
+import SearchSuggestions from '../../extensions/portal/components/search-suggestions';
+import styles from '../../extensions/portal/components/portal-container.module.scss';
 import { log } from '../../common/diagnostics';
 import { PortalContext } from '../../common/portal-context';
 import { SearchBox } from 'office-ui-fabric-react';
-import styles from '../../extensions/portal/components/portal-container.module.scss';
-import SearchSuggestions from '../../extensions/portal/components/search-suggestions';
 
 interface ISearchContainerState {
     queryText: string;
