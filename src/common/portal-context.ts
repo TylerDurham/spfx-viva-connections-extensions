@@ -3,6 +3,7 @@ import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import { getHomeSite, ISpoHomeSite } from './sharepoint-service';
 
 interface IPortalContext {
+    app: ApplicationCustomizerContext | undefined;
     debug: IDebugContext | undefined;
     homeSite: ISpoHomeSite | undefined;
     search: ISearchContext | undefined;
@@ -15,6 +16,7 @@ interface ISearchContext {
 }
 
 const PortalContext = React.createContext<IPortalContext>({
+    app: undefined,
     debug: undefined,
     homeSite: undefined,
     search: undefined,
@@ -77,6 +79,7 @@ const getSearchContext = (): ISearchContext => {
 
 const getPortalContext = async (context: ApplicationCustomizerContext): Promise<IPortalContext> => {
     const portalContext = {
+        app: context,
         debug: Object.freeze(new DebugContext()),
         homeSite: Object.freeze (await getHomeSite(context)),
         search: Object.freeze(getSearchContext())
