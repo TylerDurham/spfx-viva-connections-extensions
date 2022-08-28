@@ -1,12 +1,11 @@
-import { ComboBox, SearchBox } from 'office-ui-fabric-react';
 import * as React from 'react';
-import { log } from '../../../common/diagnostics';
-import SearchHistory from '../../../common/search-history';
-import { PortalContext } from '../../../common/portal-context';
-import ISearchBoxContainerProps from './isearch-box-container-props';
 import * as styles from './portal-container.module.scss';
-import { getSearchSuggestions } from '../../../common/sharepoint-service';
+import ISearchBoxContainerProps from './isearch-box-container-props';
+import SearchHistory from '../../../common/search-history';
 import SearchSuggestions from './search-suggestions';
+import { log } from '../../../common/diagnostics';
+import { PortalContext } from '../../../common/portal-context';
+import { SearchBox } from 'office-ui-fabric-react';
 
 interface ISearchContainerState {
     queryText: string;
@@ -16,7 +15,7 @@ interface ISearchContainerState {
 export default function SearchBoxContainer(props: ISearchBoxContainerProps): React.ReactElement {
 
     // Grab current context from React
-    const { app, search, debug } = React.useContext(PortalContext);
+    const { search, debug } = React.useContext(PortalContext);
 
     // Grab queryText from URL
     const [state, setState] = React.useState<ISearchContainerState>({

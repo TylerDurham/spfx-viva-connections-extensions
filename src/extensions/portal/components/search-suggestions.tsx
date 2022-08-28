@@ -6,17 +6,18 @@ import { ISearchHistoryItem } from '../../../common/search-history';
 import { getSearchSuggestions, ISpoSearchQuery, ISpoSearchSuggestions } from '../../../common/sharepoint-service';
 import styles from './search-suggestions.module.scss';
 
+const MODULE_NAME = "search-suggestions.tsx";
 export interface ISearchSuggestionsProps {
     queryText: string;
     visible: boolean;
 }
 
-interface ISearchSuggestionsState {
-    queryText: string;
-    suggestions: ISpoSearchSuggestions | null;
-}
+// interface ISearchSuggestionsState {
+//     queryText: string;
+//     suggestions: ISpoSearchSuggestions | undefined;
+// }
 
-const renderHistory = (history: ISearchHistoryItem[]) => {
+const renderHistory = (history: ISearchHistoryItem[]): React.ReactElement => {
     if (history.length === 0) return <></>;
 
     return (
@@ -37,7 +38,7 @@ const renderHistory = (history: ISearchHistoryItem[]) => {
     )
 }
 
-const renderQueries = (queries: ISpoSearchQuery[]) => {
+const renderQueries = (queries: ISpoSearchQuery[]): React.ReactElement => {
     if (queries.length === 0) return <></>;
     return (
         <div>
@@ -57,7 +58,7 @@ const renderQueries = (queries: ISpoSearchQuery[]) => {
     )
 }
 
-const renderPeople = (people: string[]) => {
+const renderPeople = (people: string[]): React.ReactElement => {
     if (people.length === 0) return <></>;
     return (
         <div>
@@ -77,11 +78,11 @@ const renderPeople = (people: string[]) => {
     )
 }
 
-export default function SearchSuggestions(props: ISearchSuggestionsProps) {
+export default function SearchSuggestions(props: ISearchSuggestionsProps): React.ReactElement<ISearchSuggestionsProps> {
 
     const { app } = React.useContext(PortalContext);
 
-    const [queryText, setQueryText] = React.useState<string>(props.queryText);
+    //const [queryText, setQueryText] = React.useState<string>(props.queryText);
 
     const [searchSuggestions, setSearchSuggestions] = React.useState<ISpoSearchSuggestions>({
         History: [],
@@ -89,14 +90,20 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps) {
         Queries: []
     })
 
-    const getSuggestions = (queryText: string) => {
+    const getSuggestions = (queryText: string): React.ReactElement => {
 
         React.useEffect(() => {
-            ; (async () => {
-                const suggestions = await getSearchSuggestions(app, queryText);
-                log(suggestions, 'search-suggestions.tsx');
-                setSearchSuggestions(suggestions);
-            })();
+
+            (() => {
+                getSearchSuggestions(app, queryText)
+                    .then((suggestions) => {
+                        setSearchSuggestions(suggestions);
+                    })
+                    .catch((err) => {
+                        log(err, MODULE_NAME);
+                    })
+            })()            
+            
         }, [queryText]);
 
         return (
@@ -143,5 +150,16 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps) {
                         log(item.searchTerm, "hhhh");
                         <li key={index}>{item.searchTerm}</li>
                     })}
+
+*/
+
+
+/*
+
+(async () => {
+                const suggestions = await getSearchSuggestions(app, queryText);
+                log(suggestions, 'search-suggestions.tsx');
+                setSearchSuggestions(suggestions);
+            })();
 
 */
