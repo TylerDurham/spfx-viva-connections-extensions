@@ -3,12 +3,15 @@ import * as React from 'react';
 import { ISearchHistoryItem } from '../../common/search-history';
 import styles from './search-suggestions.module.scss';
 
-export interface IHistoryProps {
+/**
+ * Describes the properties of the HistoryList component.
+ */
+export interface IHistoryListProps {
     items: ISearchHistoryItem[],
     text: string
 }
 
-export default function History(props: IHistoryProps): React.ReactElement<IHistoryProps> {
+export default function HistoryList(props: IHistoryListProps): React.ReactElement<IHistoryListProps> {
 
     if (props.items.length === 0) return <></>;
 

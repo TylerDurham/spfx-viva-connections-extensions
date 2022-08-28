@@ -5,7 +5,7 @@ import { Icon } from 'office-ui-fabric-react';
 import { ISearchSuggestionsProps } from './interfaces';
 import { log } from '../../common/diagnostics';
 import { PortalContext } from '../../common/portal-context';
-import History from './history';
+import HistoryList from './history-list';
 
 /** Module Name for logging. */
 const MODULE_NAME = "search-suggestions.tsx";
@@ -81,7 +81,7 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps): React
         return (
 
             <div>
-                <History text='History' items={searchSuggestions.History}></History>
+                <HistoryList text='History' items={searchSuggestions.History}></HistoryList>
 
                 {renderPeople(searchSuggestions.PeopleNames)}
 
