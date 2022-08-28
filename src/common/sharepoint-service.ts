@@ -1,6 +1,7 @@
 import * as diag from './diagnostics';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import { SPHttpClient } from '@microsoft/sp-http';
+import SearchHistory, { ISearchHistoryItem } from './search-history';
 
 /** Module name for logging. */
 const MODULE_NAME = 'sharepoint-service';
@@ -37,8 +38,17 @@ export const getHomeSite = async (context: ApplicationCustomizerContext): Promis
         });
 }
 
-/*
-export const getSearchSuggestions = async (context: ApplicationCustomizerContext, queryText: string) => {
+export interface ISpoSearchQuery {
+    IsPersonal: boolean;
+    Query: string;
+}
+export interface ISpoSearchSuggestions {
+    PeopleNames: string[];
+    Queries: ISpoSearchQuery[];
+    History: ISearchHistoryItem[];
+}
+
+export const getSearchSuggestions = async (context: ApplicationCustomizerContext, queryText: string): Promise<ISpoSearchSuggestions> => {
     const url = `${context.pageContext.web.absoluteUrl}/_api/search/suggest?querytext='${queryText}'&showpeoplenamesuggestions=true&fprequerysuggestions=true`;
 
     const timer = new diag.Timer();
@@ -47,8 +57,9 @@ export const getSearchSuggestions = async (context: ApplicationCustomizerContext
             return response.json()
                 .then((json) => {
                     diag.log(`Retrieved search suggestions in .${timer.timeElapsed()} seconds.`, MODULE_NAME);
+                    json.History = ( new SearchHistory(5)).find(queryText);
                     return json
                 });
         });
 }
-*/
+
