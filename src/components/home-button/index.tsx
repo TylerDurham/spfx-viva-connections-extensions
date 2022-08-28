@@ -3,7 +3,8 @@ import * as React from 'react';
 import IHomeButtonProps from './interfaces';
 import { IconButton, IIconProps } from 'office-ui-fabric-react';
 import { PortalContext } from '../../common/portal-context';
-import styles from '../../extensions/portal/components/portal-container.module.scss';
+import styles from '../global.module.scss';
+
 
 /**
  * A React component that renders the "Home" button.
@@ -29,7 +30,7 @@ export default function HomeButton(props: IHomeButtonProps): React.ReactElement 
     }
 
     return (
-        <div className={styles.homeButtonContainer}>
+        <div className={styles.homeButton}>
             <IconButton 
                 iconProps={iconProps} 
                 onClick={() => handleOnClick()}>

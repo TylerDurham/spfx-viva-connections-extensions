@@ -2,10 +2,11 @@ import * as React from 'react';
 import ISearchContainerProps from './interfaces';
 import SearchHistory from '../../common/search-history';
 import SearchSuggestions from '../../extensions/portal/components/search-suggestions';
-import styles from '../../extensions/portal/components/portal-container.module.scss';
+
 import { log } from '../../common/diagnostics';
 import { PortalContext } from '../../common/portal-context';
 import { SearchBox } from 'office-ui-fabric-react';
+import styles from '../global.module.scss';
 
 interface ISearchContainerState {
     queryText: string;
@@ -64,7 +65,7 @@ export default function SearchContainer(props: ISearchContainerProps): React.Rea
     }
 
     return (
-        <div className={styles.searchBoxContainer}>
+        <div className={styles.search}>
             <SearchBox
                 placeholder='Search in SharePoint' 
                 value={state.queryText} 
