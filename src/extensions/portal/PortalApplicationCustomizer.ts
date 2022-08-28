@@ -39,7 +39,7 @@ export default class PortalApplicationCustomizer
 
     diag.log(`Initializing...`, MODULE_NAME);
     const portalContext = await getPortalContext(this.context);
-    diag.log(portalContext, MODULE_NAME);
+    //diag.log(portalContext, MODULE_NAME);
 
     if (this.isInIFrame() === true || portalContext.debug.isDebugging === true || portalContext.debug.showInSpo === true) {
 
