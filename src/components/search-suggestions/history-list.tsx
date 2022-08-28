@@ -7,8 +7,12 @@ import styles from './search-suggestions.module.scss';
  * Describes the properties of the HistoryList component.
  */
 export interface IHistoryListProps {
+
+    /** The list of items to render as a list. */
     items: ISearchHistoryItem[],
-    text: string
+
+    /** The text label to display. */
+    headerText: string
 }
 
 export default function HistoryList(props: IHistoryListProps): React.ReactElement<IHistoryListProps> {
@@ -17,7 +21,7 @@ export default function HistoryList(props: IHistoryListProps): React.ReactElemen
 
     return (
         <div>
-            { props.text }
+            { props.headerText }
             <ul className={styles.searchSuggestionList}>
                 { props.items.map((item, index) => {
                     return (

@@ -81,7 +81,7 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps): React
         return (
 
             <div>
-                <HistoryList text='History' items={searchSuggestions.History}></HistoryList>
+                <HistoryList headerText='History' items={searchSuggestions.History}></HistoryList>
 
                 {renderPeople(searchSuggestions.PeopleNames)}
 
