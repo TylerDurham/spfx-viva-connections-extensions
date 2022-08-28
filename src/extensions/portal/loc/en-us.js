@@ -1,5 +1,5 @@
 define([], function() {
   return {
-    "Title": "PortalApplicationCustomizer"
+    "Title": "VivaConnectionsApplicationCustomizer"
   }
 });

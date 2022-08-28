@@ -7,6 +7,7 @@ import { ISearchSuggestionsProps } from './interfaces';
 import { log } from '../../common/diagnostics';
 import { PortalContext } from '../../common/portal-context';
 
+/** Module Name for logging. */
 const MODULE_NAME = "search-suggestions.tsx";
 
 
@@ -116,7 +117,7 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps): React
 
         )
     }
-
+    log('Component loading.', MODULE_NAME);
     return (
         <div className={styles.searchSuggestions} style={{
             textAlign: 'left',

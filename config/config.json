@@ -5,14 +5,14 @@
     "portal-application-customizer": {
       "components": [
         {
-          "entrypoint": "./lib/extensions/portal/PortalApplicationCustomizer.js",
-          "manifest": "./src/extensions/portal/PortalApplicationCustomizer.manifest.json"
+          "entrypoint": "./lib/extensions/portal/VivaConnectionsApplicationCustomizer.js",
+          "manifest": "./src/extensions/portal/VivaConnectionsApplicationCustomizer.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "PortalApplicationCustomizerStrings": "lib/extensions/portal/loc/{locale}.js"
+    "VivaConnectionsApplicationCustomizerStrings": "lib/extensions/portal/loc/{locale}.js"
   }
 }

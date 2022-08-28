@@ -9,21 +9,21 @@ import TopPlaceholder from './components/top-placeholder';
 // Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
 initializeIcons(/* optional base url */);
 
-const MODULE_NAME = "PortalApplicationCustomizer";
+const MODULE_NAME = "VivaConnectionsApplicationCustomizer";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
  * it will be deserialized into the BaseExtension.properties object.
  * You can define an interface to describe it.
  */
-export interface IPortalApplicationCustomizerProperties {
+export interface IVivaConnectionsApplicationCustomizerProperties {
   // This is an example; replace with your own property
   testMessage: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
-export default class PortalApplicationCustomizer
-  extends BaseApplicationCustomizer<IPortalApplicationCustomizerProperties> {
+export default class VivaConnectionsApplicationCustomizer
+  extends BaseApplicationCustomizer<IVivaConnectionsApplicationCustomizerProperties> {
 
   private topPlaceholder: PlaceholderContent | undefined;
 

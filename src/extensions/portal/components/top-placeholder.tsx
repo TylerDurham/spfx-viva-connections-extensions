@@ -3,7 +3,9 @@ import HomeButton from '../../../components/home-button';
 import SearchContainer from '../../../components/search-container';
 import styles from '../../../components/global.module.scss';
 import { IPortalContext, PortalContext } from '../../../common/portal-context';
+import { log } from '../../../common/diagnostics';
 
+/** Module Name for logging. */
 const MODULE_NAME = "top-placeholder.tsx";
 
 export interface IPortalContainerProps {
@@ -11,6 +13,9 @@ export interface IPortalContainerProps {
 }
 
 export default function TopPlaceholder(props: IPortalContainerProps): React.ReactElement {
+    
+    log('Component loading.', MODULE_NAME);
+
     return (
         <PortalContext.Provider value={props.context}>
             <div className={ styles.top }>
@@ -18,7 +23,7 @@ export default function TopPlaceholder(props: IPortalContainerProps): React.Reac
                 <HomeButton></HomeButton>
 
                 <SearchContainer></SearchContainer>
-                
+
             </div> 
         </PortalContext.Provider>
     )

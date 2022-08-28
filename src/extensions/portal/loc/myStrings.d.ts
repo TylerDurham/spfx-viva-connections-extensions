@@ -1,8 +1,8 @@
-declare interface IPortalApplicationCustomizerStrings {
+declare interface IVivaConnectionsApplicationCustomizerStrings {
   Title: string;
 }
 
-declare module 'PortalApplicationCustomizerStrings' {
-  const strings: IPortalApplicationCustomizerStrings;
+declare module 'VivaConnectionsApplicationCustomizerStrings' {
+  const strings: IVivaConnectionsApplicationCustomizerStrings;
   export = strings;
 }
