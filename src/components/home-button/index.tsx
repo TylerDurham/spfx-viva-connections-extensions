@@ -1,15 +1,16 @@
 import * as React from 'react';
-import * as styles from './portal-container.module.scss';
-import IHomeButtonProps from './ihome-button-container-props';
+
+import IHomeButtonProps from './interfaces';
 import { IconButton, IIconProps } from 'office-ui-fabric-react';
-import { PortalContext } from '../../../common/portal-context';
+import { PortalContext } from '../../common/portal-context';
+import styles from '../../extensions/portal/components/portal-container.module.scss';
 
 /**
  * A React component that renders the "Home" button.
  * @param props Configuration properties for the component.
  * @returns The React component.
  */
-export default function HomeButtonContainer(props: IHomeButtonProps): React.ReactElement {
+export default function HomeButton(props: IHomeButtonProps): React.ReactElement {
     
     // Grab current context from React
     const { homeSite, debug } = React.useContext(PortalContext);
@@ -28,7 +29,7 @@ export default function HomeButtonContainer(props: IHomeButtonProps): React.Reac
     }
 
     return (
-        <div className={styles.default.homeButtonContainer}>
+        <div className={styles.homeButtonContainer}>
             <IconButton 
                 iconProps={iconProps} 
                 onClick={() => handleOnClick()}>
