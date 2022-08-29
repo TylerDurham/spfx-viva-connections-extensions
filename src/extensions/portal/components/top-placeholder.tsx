@@ -6,7 +6,7 @@ import { IPortalContext, PortalContext } from '../../../common/portal-context';
 import { log } from '../../../common/diagnostics';
 
 /** Module Name for logging. */
-const MODULE_NAME = "top-placeholder.tsx";
+const MODULE_NAME = "extensions/portal/components/top-placeholder.tsx";
 
 export interface IPortalContainerProps {
     context: IPortalContext;

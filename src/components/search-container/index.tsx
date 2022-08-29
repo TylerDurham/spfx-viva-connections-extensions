@@ -13,8 +13,13 @@ interface ISearchContainerState {
     showSuggestions: boolean;
 }
 
+/** Module Name for logging. */
+const MODULE_NAME = "components/search-container/index.tsx";
+
 export default function SearchContainer(props: ISearchContainerProps): React.ReactElement {
 
+    log('Component loading.', MODULE_NAME);
+    
     // Grab current context from React
     const { search, debug } = React.useContext(PortalContext);
 

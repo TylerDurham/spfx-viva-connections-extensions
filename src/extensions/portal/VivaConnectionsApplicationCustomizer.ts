@@ -9,7 +9,7 @@ import TopPlaceholder from './components/top-placeholder';
 // Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
 initializeIcons(/* optional base url */);
 
-const MODULE_NAME = "VivaConnectionsApplicationCustomizer";
+const MODULE_NAME = "extensions/portal/VivaConnectionsApplicationCustomizer.ts";
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -37,7 +37,8 @@ export default class VivaConnectionsApplicationCustomizer
 
   public async onInit(): Promise<void> {
 
-    diag.log(`Initializing...`, MODULE_NAME);
+    diag.log(`Initializing.`, MODULE_NAME);
+    
     const portalContext = await getPortalContext(this.context);
     //diag.log(portalContext, MODULE_NAME);
 

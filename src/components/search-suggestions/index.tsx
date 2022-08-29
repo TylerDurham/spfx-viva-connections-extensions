@@ -8,9 +8,12 @@ import { PortalContext } from '../../common/portal-context';
 import HistoryList from './history-list';
 
 /** Module Name for logging. */
-const MODULE_NAME = "search-suggestions.tsx";
+const MODULE_NAME = "components/search-suggestions/index.tsx";
 
 const renderQueries = (queries: ISpoSearchQuery[]): React.ReactElement => {
+
+    log('Component loading.', MODULE_NAME);
+    
     if (queries.length === 0) return <></>;
     return (
         <div>

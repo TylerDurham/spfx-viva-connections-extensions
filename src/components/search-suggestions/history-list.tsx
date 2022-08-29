@@ -1,7 +1,11 @@
-import { Icon } from 'office-ui-fabric-react';
 import * as React from 'react';
-import { ISearchHistoryItem } from '../../common/search-history';
 import styles from './search-suggestions.module.scss';
+import { Icon } from 'office-ui-fabric-react';
+import { ISearchHistoryItem } from '../../common/search-history';
+import { log } from '../../common/diagnostics';
+
+/** Module Name for logging. */
+const MODULE_NAME = "components/search-suggestions/index.tsx";
 
 /**
  * Describes the properties of the HistoryList component.
@@ -17,6 +21,8 @@ export interface IHistoryListProps {
 
 export default function HistoryList(props: IHistoryListProps): React.ReactElement<IHistoryListProps> {
 
+    log('Component loading.', MODULE_NAME);
+    
     if (props.items.length === 0) return <></>;
 
     return (
