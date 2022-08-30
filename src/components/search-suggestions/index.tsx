@@ -29,7 +29,6 @@ const renderQueries = (queries: ISpoSearchQuery[]): React.ReactElement => {
                 })}
             </ul>
         </div>
-
     )
 }
 
@@ -98,13 +97,11 @@ export default function SearchSuggestions(props: ISearchSuggestionsProps): React
         <div className={styles.searchSuggestions} style={{
             textAlign: 'left',
             position: 'absolute',
-            zIndex: 100,
+            zIndex: 1,
             display: (props.visible) ? 'block' : 'none',
-            width: '800px',
-            overflow: 'scroll',
-            height: '400px',
+            overflow: 'auto',
             color: 'black',
-            top: '100px', left: '100px', backgroundColor: 'white'
+            backgroundColor: 'white'
         }}>{getSuggestions(props.queryText)}</div>
     )
 

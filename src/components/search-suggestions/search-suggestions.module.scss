@@ -1,16 +1,26 @@
 $debug-border-width: 0px;
+$padding: 5px;
 
 .searchSuggestions {
+
+    width: 468px;
+    min-height: 150px;
+
+    .searchSuggestionListHeader {
+        padding: $padding;
+    }
+
     .searchSuggestionList {
         list-style-type: none;
         background-color: transparent;
-        padding: 0px;
+        padding: $padding;
         margin: 0px;
 
         li {
             border: solid $debug-border-width red;
             margin: 0px;
             padding: 3px;
+            display: flex;
 
             .icon {
                 margin-right: 10px;
@@ -20,6 +30,13 @@ $debug-border-width: 0px;
             .text {
                 color: #444444;
                 border: solid $debug-border-width #cc00cc;
+                width: 220px;
+            }
+
+            .button {
+                border: solid $debug-border-width #cc00cc;
+                text-align: right;
+                width: 200px;
             }
         }
     }

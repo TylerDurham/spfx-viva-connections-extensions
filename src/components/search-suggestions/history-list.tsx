@@ -27,14 +27,20 @@ export default function HistoryList(props: IHistoryListProps): React.ReactElemen
 
     return (
         <div>
-            <b>{props.headerText}</b>
+            <b className={styles.searchSuggestionListHeader}>{props.headerText}</b>
             <ul className={styles.searchSuggestionList}>
                 { props.items.map((item, index) => {
                     return (
-                        <li key={index}>
+                        <li key={index} onClick={()=> {
+                            //alert()
+                        }}>
                             <span className={styles.icon}><Icon iconName='History' /></span>
                             <span className={styles.text}>{item.searchTerm}</span>
-                            <span>[Delete]</span>
+                            <span className={styles.button}>
+                                <button onClick={() => { 
+                                    //alert('TODO')
+                                }}>Delete</button>
+                            </span>
                         </li>
                     )
                 })}

@@ -35,6 +35,10 @@ export default class VivaConnectionsApplicationCustomizer
     }
   }
 
+  public onDispose(): void {
+    diag.log("Disposing!", MODULE_NAME)
+  }
+
   public async onInit(): Promise<void> {
 
     diag.log(`Initializing.`, MODULE_NAME);
