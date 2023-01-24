@@ -8,6 +8,8 @@ interface ISearchContainerState {
     queryText: string;
 }
 
+const STORAGE_KEY = "SPFX-VIVA-SEARCH-LAST";
+
 export default function SearchBoxContainer(props: ISearchBoxContainerProps): React.ReactElement {
 
     // Grab current context from React
@@ -19,6 +21,11 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
     });
     
     const handleOnClick = (searchText: string): void => {
+        
+        // HOTFIX: Store last search term
+        window.localStorage.setItem(STORAGE_KEY, searchText);
+
+        // Build search URL and redirect
         const url = `${search.url}?${search.queryStringParameter}=${encodeURIComponent(searchText)}&${debug.toQueryStringParams() }`;
         window.location.href = (url);
     }
@@ -35,14 +42,19 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
                         queryText: newQueryText,
                     });
                 }}
-                onSearch={() => handleOnClick(state.queryText)}></SearchBox>
+                onSearch={() => handleOnClick(state.queryText)}></SearchBox> 
         </div>
     )
 }
 
 function getQueryText(queryStringParameter: string): string {
     const url = new URL(window.location.href);
-    const queryText = url.searchParams.get(queryStringParameter);
+    let queryText = url.searchParams.get(queryStringParameter);
+
+    // HOTFIX: Read last search term
+    if (queryText===null) {
+        queryText = window.localStorage.getItem(STORAGE_KEY);
+    }
 
     return `${queryText ? queryText : ""}` as string;
 }
