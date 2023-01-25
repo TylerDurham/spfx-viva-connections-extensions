@@ -5,6 +5,7 @@ import { BaseApplicationCustomizer, PlaceholderContent, PlaceholderName } from '
 import { getPortalContext } from '../../common/portal-context';
 import { initializeIcons } from 'office-ui-fabric-react'
 import * as diag from '../../common/diagnostics';
+import VersionInfo from '../../common/version-info';
 
 // Also available from @uifabric/icons (7 and earlier) and @fluentui/font-icons-mdl2 (8+)
 initializeIcons(/* optional base url */);
@@ -37,7 +38,7 @@ export default class PortalApplicationCustomizer
 
   public async onInit(): Promise<void> {
 
-    diag.log(`Initializing...`, MODULE_NAME);
+    diag.log(`Initializing version ${VersionInfo.solution}...`, MODULE_NAME);
     const portalContext = await getPortalContext(this.context);
     diag.log(portalContext, MODULE_NAME);
 
