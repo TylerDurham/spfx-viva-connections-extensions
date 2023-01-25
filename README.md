@@ -52,6 +52,7 @@ folder name | Author details (name, company, twitter alias with link)
 
 Version|Date|Comments
 -------|----|--------
+0.6.11|January 25, 2023|Minor bug fixes.
 0.6.9|January 24, 2023|Search term now sticky in search box across page visits.
 0.6.7|August 27, 2022|Release candidate 1.
 
