@@ -15,9 +15,13 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
     // Grab current context from React
     const { search, debug } = React.useContext(PortalContext);
 
+    // Are we on the search page?
+    const isSearchPage = (window.location.href.indexOf(search.url)) >= 0;
+
     // Grab queryText from URL
     const [state, setState] = React.useState<ISearchContainerState>({
-        queryText: getQueryText(search.queryStringParameter),
+        // Only set search text from history if we are on the search page
+        queryText: getQueryText(search.queryStringParameter, isSearchPage)
     });
     
     const handleOnClick = (searchText: string): void => {
@@ -47,12 +51,12 @@ export default function SearchBoxContainer(props: ISearchBoxContainerProps): Rea
     )
 }
 
-function getQueryText(queryStringParameter: string): string {
+function getQueryText(queryStringParameter: string, isSearchPage: boolean = false): string {
     const url = new URL(window.location.href);
     let queryText = url.searchParams.get(queryStringParameter);
 
     // HOTFIX: Read last search term
-    if (queryText===null) {
+    if (queryText === null && isSearchPage === true) {
         queryText = window.localStorage.getItem(STORAGE_KEY);
     }
 
