@@ -1,14 +1,14 @@
 
-![Logo](https://github.com/TylerDurham/spfx-viva-connections-extensions/blob/master/sharepoint/images/app-icon.png?raw=true)
+![Logo](https://github.com/TylerDurham/spfx-viva-connections-extensions/blob/master/ext-search/sharepoint/images/app-icon.png?raw=true)
 # SPFX Viva Connectons Extensions
 
 ## Summary
 
 This Sharepoint Framework (SPFX) Extension provides enhanced functionality for your SharePoint Home Site portal hosted in Viva Connections.
 
-![Screenshot 1: The extension in Viva Connections](https://raw.githubusercontent.com/TylerDurham/spfx-viva-connections-extensions/master/sharepoint/images/screenshot-1.png)
+![Screenshot 1: The extension in Viva Connections](https://raw.githubusercontent.com/TylerDurham/spfx-viva-connections-extensions/master/ext-search/sharepoint/images/screenshot-1.png)
 
-![Screenshot 2: Search in Viva Connections](https://raw.githubusercontent.com/TylerDurham/spfx-viva-connections-extensions/master/sharepoint/images/screenshot-2.png)
+![Screenshot 2: Search in Viva Connections](https://raw.githubusercontent.com/TylerDurham/spfx-viva-connections-extensions/master/ext-search/sharepoint/images/screenshot-2.png)
 
 ## Features
 
