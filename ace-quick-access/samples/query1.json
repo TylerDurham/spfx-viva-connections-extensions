@@ -1,0 +1,89 @@
+{
+    "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#sites('root')/lists('ebdb9ac9-02d1-4e37-b623-5a53942ad3f4')/items(fields(Title,Subtitle,LaunchURL,ThumbnailURL,SortOrder))",
+    "value": [
+        {
+            "@odata.etag": "\"ca8d406d-1d02-4bcb-8776-e96d020b477a,1\"",
+            "createdDateTime": "2023-03-03T17:08:47Z",
+            "eTag": "\"ca8d406d-1d02-4bcb-8776-e96d020b477a,1\"",
+            "id": "1",
+            "lastModifiedDateTime": "2023-03-03T17:08:47Z",
+            "webUrl": "https://smartterthings.sharepoint.com/Lists/Quick%20Access%20Links/1_.000",
+            "createdBy": {
+                "user": {
+                    "email": "tyler@smartterthings.com",
+                    "id": "9733aef4-ac4d-4431-b3f8-359f75c1b445",
+                    "displayName": "Nestor Wilke (Tyler)"
+                }
+            },
+            "lastModifiedBy": {
+                "user": {
+                    "email": "tyler@smartterthings.com",
+                    "id": "9733aef4-ac4d-4431-b3f8-359f75c1b445",
+                    "displayName": "Nestor Wilke (Tyler)"
+                }
+            },
+            "parentReference": {
+                "id": "4e31ee70-0992-467f-ba5e-9f7b00589a62",
+                "siteId": "smartterthings.sharepoint.com,50223fb5-37ce-4151-8480-d6576a1ffc51,abc5d4d5-50dc-4d6b-a6ee-9312b26d0a64"
+            },
+            "contentType": {
+                "id": "0x01000B64B896AB3ABE4F8A8C5475FED7A30A00ADADC8825EBAB342941B71EBB37B0907",
+                "name": "Item"
+            },
+            "fields@odata.context": "https://graph.microsoft.com/v1.0/$metadata#sites('root')/lists('ebdb9ac9-02d1-4e37-b623-5a53942ad3f4')/items('1')/fields(Title,Subtitle,LaunchURL,ThumbnailURL,SortOrder)/$entity",
+            "fields": {
+                "@odata.etag": "\"ca8d406d-1d02-4bcb-8776-e96d020b477a,1\"",
+                "Title": "Enter Time",
+                "Subtitle": "Enter project time for billing.",
+                "LaunchURL": {
+                    "Description": "https://www.microsoft.com",
+                    "Url": "https://www.microsoft.com"
+                },
+                "ThumbnailURL": "{\"type\":\"thumbnail\",\"fileName\":\"Excel.jpg\",\"nativeFile\":{},\"fieldName\":\"ThumbnailURL\",\"serverUrl\":\"https://smartterthings.sharepoint.com\",\"fieldId\":\"d686ddcf-76ca-4ebb-abb9-88bea0213f7f\",\"serverRelativeUrl\":\"/SiteAssets/Lists/ebdb9ac9-02d1-4e37-b623-5a53942ad3f4/Excel.jpg\",\"id\":\"9c02b85f-0a11-49de-a304-bd1f76ade3a3\"}",
+                "SortOrder": 0
+            }
+        },
+        {
+            "@odata.etag": "\"693b6e14-9531-448e-beb9-a4f919811907,1\"",
+            "createdDateTime": "2023-03-03T17:31:07Z",
+            "eTag": "\"693b6e14-9531-448e-beb9-a4f919811907,1\"",
+            "id": "2",
+            "lastModifiedDateTime": "2023-03-03T17:31:07Z",
+            "webUrl": "https://smartterthings.sharepoint.com/Lists/Quick%20Access%20Links/2_.000",
+            "createdBy": {
+                "user": {
+                    "email": "tyler@smartterthings.com",
+                    "id": "9733aef4-ac4d-4431-b3f8-359f75c1b445",
+                    "displayName": "Nestor Wilke (Tyler)"
+                }
+            },
+            "lastModifiedBy": {
+                "user": {
+                    "email": "tyler@smartterthings.com",
+                    "id": "9733aef4-ac4d-4431-b3f8-359f75c1b445",
+                    "displayName": "Nestor Wilke (Tyler)"
+                }
+            },
+            "parentReference": {
+                "id": "4e31ee70-0992-467f-ba5e-9f7b00589a62",
+                "siteId": "smartterthings.sharepoint.com,50223fb5-37ce-4151-8480-d6576a1ffc51,abc5d4d5-50dc-4d6b-a6ee-9312b26d0a64"
+            },
+            "contentType": {
+                "id": "0x01000B64B896AB3ABE4F8A8C5475FED7A30A00ADADC8825EBAB342941B71EBB37B0907",
+                "name": "Item"
+            },
+            "fields@odata.context": "https://graph.microsoft.com/v1.0/$metadata#sites('root')/lists('ebdb9ac9-02d1-4e37-b623-5a53942ad3f4')/items('2')/fields(Title,Subtitle,LaunchURL,ThumbnailURL,SortOrder)/$entity",
+            "fields": {
+                "@odata.etag": "\"693b6e14-9531-448e-beb9-a4f919811907,1\"",
+                "Title": "Apply for Time Off",
+                "Subtitle": "Manage your absence.",
+                "LaunchURL": {
+                    "Description": "https://www.moveworks.ai",
+                    "Url": "https://www.moveworks.ai"
+                },
+                "ThumbnailURL": "{\"type\":\"thumbnail\",\"fileName\":\"Calendar.jpg\",\"nativeFile\":{},\"fieldName\":\"ThumbnailURL\",\"serverUrl\":\"https://smartterthings.sharepoint.com\",\"fieldId\":\"d686ddcf-76ca-4ebb-abb9-88bea0213f7f\",\"serverRelativeUrl\":\"/SiteAssets/Lists/ebdb9ac9-02d1-4e37-b623-5a53942ad3f4/Calendar.jpg\",\"id\":\"a505c0b3-aee9-4047-9534-10262e5f09dc\"}",
+                "SortOrder": 1
+            }
+        }
+    ]
+}

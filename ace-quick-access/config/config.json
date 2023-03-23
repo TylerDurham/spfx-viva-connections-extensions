@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "quick-access-adaptive-card-extension": {
+      "components": [
+        {
+          "entrypoint": "./lib/adaptiveCardExtensions/quickAccess/QuickAccessAdaptiveCardExtension.js",
+          "manifest": "./src/adaptiveCardExtensions/quickAccess/QuickAccessAdaptiveCardExtension.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "QuickAccessAdaptiveCardExtensionStrings": "lib/adaptiveCardExtensions/quickAccess/loc/{locale}.js"
+  }
+}

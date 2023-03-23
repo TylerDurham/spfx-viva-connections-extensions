@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Provision SharePoint assets from your SharePoint client-side web part -->
+<!-- https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/provision-sp-assets-from-package -->
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+<!--
+    <Field ID="{642F2499-1A79-499E-A8BE-8547E0D69533}"
+        Decimals="0"
+        DisplayName="Link Sort Order"
+        Max="100"
+        Min="0"
+        Name="LinkSortOrder"
+        Required="FALSE"
+        Type="Number"
+        Group="@ST Columns" />
+
+    <Field ID="{A4F09840-38B6-4CAE-A051-D6B15B25BEA1}"
+        DisplayName="Link Subtitle"
+        Name="LinkSubtitle"
+        Type="Note"
+        Required="FALSE"
+        Group="@ST Columns" />
+
+    <Field ID="{B4BF22DB-FC53-466A-8823-382C760DD3BD}"
+        DisplayName="Link Launch URL"
+        Format="Hyperlink"
+        Name="LinkLaunchURL"
+        Required="FALSE"
+        Type="URL"
+        Group="@ST Columns" />
+
+    <Field ID="{71B177C0-C272-4ACD-9BB9-84AEDC02633B}"
+        DisplayName="Link Thumbnail URL"
+        Name="LinkThumbnailURL"
+        Required="FALSE"
+        Type="Thumbnail" 
+        Format="Thumbnail" 
+        version="2.0"
+        Group="@ST Columns" />
+
+    <ContentType ID="0x0100BE55FD3112984222B6CD628F74A95FA2"
+        Name="Quick Access Link"
+        Group="@ST Content Types"
+        Description="Sample content types from web part solution">
+        <FieldRefs>
+            <FieldRef ID="{A4F09840-38B6-4CAE-A051-D6B15B25BEA1}" />
+            <FieldRef ID="{642F2499-1A79-499E-A8BE-8547E0D69533}" />
+            <FieldRef ID="{B4BF22DB-FC53-466A-8823-382C760DD3BD}" />
+            <FieldRef ID="{71B177C0-C272-4ACD-9BB9-84AEDC02633B}" />
+        </FieldRefs>
+    </ContentType>
+
+    <ListInstance CustomSchema="schema.xml"
+        FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+        Title="Quick Access Links"
+        Description="SPFx List"
+        TemplateType="100"
+        Url="Lists/Quick Access Links">
+
+        <Field></Field>
+    </ListInstance>
+
+-->
+
+</Elements>

@@ -1,0 +1,36 @@
+<!-- Provision SharePoint assets from your SharePoint client-side web part -->
+<!-- https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/provision-sp-assets-from-package -->
+<List xmlns:ows="Microsoft SharePoint" Title="Quick Access Links" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Quick Access Links" BaseType="0"
+    xmlns="http://schemas.microsoft.com/sharepoint/">
+    <MetaData>
+        <ContentTypes>
+            <ContentTypeRef ID="0x0100BE55FD3112984222B6CD628F74A95FA2" />
+        </ContentTypes>
+        <Fields></Fields>
+        <Views>
+            <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+                <XslLink Default="TRUE">main.xsl</XslLink>
+                <JSLink>clienttemplates.js</JSLink>
+                <RowLimit Paged="TRUE">30</RowLimit>
+                <Toolbar Type="Standard" />
+                <ViewFields>
+                    <FieldRef Name="LinkTitle"></FieldRef>
+                    <FieldRef Name="LaunchURL"></FieldRef>
+                    <FieldRef Name="Subtitle"></FieldRef>
+                    <FieldRef Name="SortOrder"></FieldRef>
+                    <FieldRef Name="ThumbnailURL"></FieldRef>
+                </ViewFields>
+                <Query>
+                    <OrderBy>
+                        <FieldRef Name="ID" />
+                    </OrderBy>
+                </Query>
+            </View>
+        </Views>
+        <Forms>
+            <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+            <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+            <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+        </Forms>
+    </MetaData>
+</List>
