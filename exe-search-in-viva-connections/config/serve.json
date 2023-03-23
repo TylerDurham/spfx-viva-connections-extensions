@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://3bcdst.sharepoint.com/sites/SPFX",
+      "pageUrl": "https://smartterthings.sharepoint.com/sites/DEV03/",
       "customActions": {
         "1b4b0d0d-cbce-44b1-baaa-f14aa216649e": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "portal": {
-      "pageUrl": "https://3bcdst.sharepoint.com/sites/SPFX",
+      "pageUrl": "https://smartterthings.sharepoint.com/sites/DEV03/",
       "customActions": {
         "1b4b0d0d-cbce-44b1-baaa-f14aa216649e": {
           "location": "ClientSideExtension.ApplicationCustomizer",
