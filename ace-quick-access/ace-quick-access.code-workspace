@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../common-lib"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": ".\\node_modules\\typescript\\lib"
+	}
+}

@@ -1,0 +1,20 @@
+{
+  "name": "common-lib",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TylerDurham <sudo-nymd@outlook.com> (https://github.com/TylerDurham)",
+  "license": "MIT",
+  "devDependencies": {
+    "@microsoft/rush-stack-compiler-4.5": "^0.2.2"
+  },
+  "dependencies": {
+    "@microsoft/sp-adaptive-card-extension-base": "^1.16.1",
+    "@microsoft/sp-core-library": "^1.16.1",
+    "@microsoft/sp-http": "^1.16.1"
+  }
+}

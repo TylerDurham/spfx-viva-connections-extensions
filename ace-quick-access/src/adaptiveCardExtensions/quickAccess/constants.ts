@@ -14,3 +14,7 @@ export const logger = {
 if (DEBUG_LOGGING === true) {
     logger.debug("debug", { message: "Logging is ON!", url: URL });
 }
+
+import { HELLO } from "../../../../common-lib/lib/index"
+
+console.log(HELLO)
